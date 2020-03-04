@@ -5,7 +5,7 @@ CREATE DATABASE bytes_db;
 
 -- //users, posts, hashtag table
 
-DROP TABLE IF EXISTS hashtag;
+DROP TABLE IF EXISTS hashtags;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS users; 
 
