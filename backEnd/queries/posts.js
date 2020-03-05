@@ -7,7 +7,7 @@ const getAllPosts = async (req, res, next) => {
             status: "success",
             message: "all users posts",
             payload: posts
-        })
+        }) 
     } catch (err){
         res.status(400).json({
             status: "Error",
