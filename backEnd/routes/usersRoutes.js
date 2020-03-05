@@ -1,5 +1,5 @@
 const users = require("express").Router();
-const { getSingleUser ,getUser, createUser, editUser, deleteUser } = require("../../queries/users");
+const { getSingleUser ,getUser, createUser, editUser, deleteUser } = require("../queries/users");
 
 
 

@@ -1,11 +1,11 @@
-const db = require('./../db');
+const db = require('../db/index');
 
 
 
-const getUserById = async (req, res, next) => {
+const getSingleUser = async (req, res, next) => {
     try {
-        let {userId} = req. params;
-        let user = await db.one("SELECT * FROM users WHERE id=$1", userId);
+        let userId = req.params.id;
+        let user = await db.a(`SELECT * FROM users WHERE id=${userId}`);
         res.status(200).json({
             status: "success",
             message: "all users posts",
@@ -14,10 +14,33 @@ const getUserById = async (req, res, next) => {
     } catch (err){
         res.status(400).json({
             status: "Error",
-            message: "Error",
+            message: "Couldn't get User",
             payload: err
         })
         next()
+    }
+}
+
+const getUser = async (req, res, next) => {
+    try{
+        let user = await db.one("SELECT * FROM users WHERE username = $1", req.body.username);
+        if (!user) {
+            res.status(404).json({
+                message: "User doesn't exist!"
+            })
+        } else if (user.password !== req.body.password) {
+            res.status(401).json({
+                message: "Password is incorrect!"
+            })
+        } else {
+            res.status(200).json({
+                user, 
+                status: "success",
+                message: "USER"
+            })
+        }
+    } catch (err){
+        next(err)
     }
 }
 
@@ -78,4 +101,4 @@ const createUser = async (req, res, next) => {
     }
 }
 
-export {getUserById, deleteUser, editUser, createUser}
+module.exports = {getSingleUser, getUser, deleteUser, editUser, createUser}
