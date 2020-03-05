@@ -5,17 +5,17 @@ CREATE DATABASE bytes_db;
 
 -- //users, posts, hashtag table
 
-DROP TABLE IF EXISTS hashtag;
+DROP TABLE IF EXISTS hashtags;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS users; 
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
-    firstName text,
-    lastName text, 
-    userName text,
-    password text, 
-    email text,
+    firstName text NOT NULL,
+    lastName text NOT NULL, 
+    userName TEXT NOT NULL UNIQUE,
+    password VARCHAR, 
+    email VARCHAR,
     user_pic VARCHAR
 
 );
