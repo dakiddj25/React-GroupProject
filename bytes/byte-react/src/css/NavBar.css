@@ -1,0 +1,10 @@
+nav {
+    display: flex;
+    background-color: lightgrey;
+    justify-content: space-evenly;
+}
+a:hover{
+    background-color: lime;
+    cursor: pointer;
+}
+
