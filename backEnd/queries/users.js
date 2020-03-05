@@ -5,7 +5,7 @@ const db = require('../db/index');
 const getSingleUser = async (req, res, next) => {
     try {
         let userId = req.params.id;
-        let user = await db.a(`SELECT * FROM users WHERE id=${userId}`);
+        let user = await db.one(`SELECT * FROM users WHERE id=${userId}`);
         res.status(200).json({
             status: "success",
             message: "all users posts",
