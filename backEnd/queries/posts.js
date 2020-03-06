@@ -1,4 +1,4 @@
-const db = require('../db/index')
+const db = require('./../db')
 
 const getPosts = async (req, res, next) => {
     try {
@@ -7,7 +7,7 @@ const getPosts = async (req, res, next) => {
             status: "success",
             message: "all users posts",
             payload: posts
-        }) 
+        })
     } catch (err){
         res.status(400).json({
             status: "Error",
@@ -18,23 +18,23 @@ const getPosts = async (req, res, next) => {
     }
 }
 
-// const getAllUsersPosts = async (req, res, next) => {
-//     try{
-//         let posts = await db.any("SELECT * FROM posts INNERJOIN users ON posts.poster_id=users.id");
-//         res.status(200).json({
-//             status: "success",
-//             message: "all users posts",
-//             payload: posts
-//         })
-//     } catch (err){
-//         res.status(400).json({
-//             status: "Error",
-//             message: "Error",
-//             payload: err
-//         })
-//         next()
-//     }
-// }
+const getAllUsersPosts = async (req, res, next) => {
+    try{
+        let posts = await db.any("SELECT * FROM posts INNERJOIN users ON posts.poster_id=users.id");
+        res.status(200).json({
+            status: "success",
+            message: "all users posts",
+            payload: posts
+        })
+    } catch (err){
+        res.status(400).json({
+            status: "Error",
+            message: "Error",
+            payload: err
+        })
+        next()
+    }
+}
 
 const getPostByID = async (req, res, next) => {
     try {
@@ -57,8 +57,8 @@ const getPostByID = async (req, res, next) => {
 
 const deletePost = async (req, res, next) => {
     try {
-        let {userId} = req.params;
-        let post = ("DELETE FROM posts WHERE id=$1 RETURNING *", userId)
+        let {tId} = req.params.id;
+        let post = ("DELETE FROM posts WHERE id=$1 RETURNING *", postId)
         res.status(200).json({
             status: "success",
             message: "all users posts",
@@ -78,7 +78,7 @@ const editPost = async (req, res, next) => {
     try {
         let {pictures, caption} = req.body;
         let {userId} = req. params;
-        let post = await db.one("UPDATE posts SET pictures=$1, caption=$2  WHERE id=$3 RETURNING *", [pictures, caption, userId])
+        let post = await db.one("UPDATE posts SET pictures=$1, caption=$2  WHERE =$3", [pictures, caption, userId])
         res.status(200).json({
             status: "success",
             message: "all users posts",
@@ -94,24 +94,11 @@ const editPost = async (req, res, next) => {
     }
 }
 
-const createPost = async (req, res, next) => {
-    try {
-        let {users_id, pictures, caption} = req.body;
-        let post = await db.one('INSERT INTO posts (users_id, pictures, caption) VALUES (${users}, ${pictures}, ${caption})', req.body);
-        res.status(200).json({
-            status: "success",
-            message: "created a new post",
-            payload: post
-        })
-    } catch (err){
-        res.status(400).json({
-            status: "Error",
-            message: "Error",
-            payload: err
-        })
-        next()
-    }
-}
+// const createPost = async (req, res, next) => {
+//     try {
+//         let {users_id, pictures, caption} = req.body;
+//         let post = awat db.one("INSERT INTO posts ()")
+//     }
+// }
 
-// getAllUsersPosts
-module.exports = {getPosts, getPostByID, deletePost, editPost, createPost}
+module.exports = {getPosts, getPostByID, deletePost, editPost}

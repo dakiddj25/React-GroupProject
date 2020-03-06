@@ -8,7 +8,7 @@ const getSingleUser = async (req, res, next) => {
         let user = await db.one(`SELECT * FROM users WHERE id=${userId}`);
         res.status(200).json({
             status: "success",
-            message: "all users posts",
+            message: "single user",
             payload: user
         })
     } catch (err){
@@ -23,7 +23,7 @@ const getSingleUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
     try{
-        let user = await db.one("SELECT * FROM users WHERE username = $1", req.body.username);
+        let user = await db.one("SELECT * FROM users WHERE username = $1", req.params.username);
         if (!user) {
             res.status(404).json({
                 message: "User doesn't exist!"
@@ -50,7 +50,7 @@ const deleteUser = async (req, res, next) => {
         let user = ("DELETE FROM users WHERE id=$1 RETURNING *", userId)
         res.status(200).json({
             status: "success",
-            message: "all users posts",
+            message: " user deleted",
             payload: user
         })
     } catch (err){
@@ -66,8 +66,8 @@ const deleteUser = async (req, res, next) => {
 const editUser = async (req, res, next) => {
     try {
         let {firstName, lastName, userName, password, email, userPic} = req.body;
-        let {userId} = req. params;
-        let user = await db.one("UPDATE posts SET firstName=$1, lastName=$2, userName=$3, password=$4, email=$5, userPic=$6 WHERE =$7 RETURNING *", [firstName, lastName, userName, password, email, userPic, userId])
+        let {userId} = req. params.id;
+        let user = await db.one("UPDATE users SET firstName=$1, lastName=$2, userName=$3, email=$4, password=$5, userPic=$6 WHERE =$7 RETURNING *", [firstName, lastName, userName, email, password,user_pic, userId])
         res.status(200).json({
             status: "success",
             message: "all users posts",
@@ -85,10 +85,11 @@ const editUser = async (req, res, next) => {
 
 const createUser = async (req, res, next) => {
     try {
-        let user = await db.one("INSERT INTO users (firstName, lastName, userName, email, password, user_pic ) VALUES (${firstName}, ${lastName}, ${userName}, ${email}, ${password}, ${user_pic}) RETURNING *", req.body)
+        let user = await db.none(
+            `INSERT INTO users (firstName, lastName, userName, email, password, user_pic) VALUES('${req.body.firstName}', '${req.body.lastName}', '${req.body.userName}', '${req.body.email}', '${req.body.password}', '${req.body.user_pic}')`)
         res.status(200).json({
             status: "success",
-            message: "all users posts",
+            message: "added user posts",
             payload: user
         })
     } catch (err){

@@ -10,7 +10,7 @@ const getHashtagById = async (req, res, next) => {
             message: "all users posts",
             payload: hashtag
         })
-    } catch (err){
+    } catch (err){j
         res.status(400).json({
             status: "Error",
             message: "Error",
