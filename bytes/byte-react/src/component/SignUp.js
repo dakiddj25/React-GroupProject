@@ -1,5 +1,5 @@
 import React from "react";
-import { useInputs, useStateWithLocalStorage } from "../utility/customHooks";
+import { useInputs, fetchData } from "../utility/InputHooks";
 import { useHistory } from "react-router-dom";
 
 import "../css/SignUp.css"

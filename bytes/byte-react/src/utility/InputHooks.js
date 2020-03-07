@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 //destructure when calling in other pages and import 
@@ -13,19 +13,10 @@ export const useInputs = (initialValue) => {
     }
     return { value, onChange: handleChange}
 }
-export  const useStateWithLocalStorage = localStorageKey => {
-    const [value, setValue] = React.useState(
-      localStorage.getItem(localStorageKey) || ''
-    );
-    React.useEffect(() => {
-      localStorage.setItem(localStorageKey, value);
-    }, [value]);
-    return [value, setValue];
-  };
 
-// //should do a get axios
+//should do a get axios
 // export const fetchData = (url, initialValue) => {
-//     const [data, setData] = UseState(initialValue);
+//     const [data, setData] = useState(initialValue);
 //     const [isLoading, setIsLoading] = useState(true);
 
 //     const axiosGet = async (url) => {
@@ -38,13 +29,13 @@ export  const useStateWithLocalStorage = localStorageKey => {
 //             setIsLoading(false)
 //             console.log(error)
 //         }
-//         useEffect(() => {
+//     }
+//          useEffect(() => {
 //             setTimeout(() => {
 //                 axiosGet(url) 
 //             }, 1000)
 //         }, [])
 //         return[data, isLoading];
-//     }
 // }
 
 // //should do a post axios
