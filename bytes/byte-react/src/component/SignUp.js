@@ -2,8 +2,12 @@ import React from "react";
 import { useInputs, fetchData } from "../utility/InputHooks";
 import { useHistory } from "react-router-dom";
 
+import image from './../css/Assets/bytesLogo.jpg'
+import image2 from '../css/Assets/group.jpg'
+
 import "../css/SignUp.css"
 import axios from "axios";
+import LogIn from "./LogIn";
 
 const SignUp = () => {
     const firstName = useInputs("")
@@ -36,13 +40,19 @@ const SignUp = () => {
         }
 
     }
-
-
-
-
+    // const handleLogIn =  ()=>{
+    //     <LogIn/>
+    // }
     return (
-        <div className="body">
-            <form onSubmit={handleSubmit} className="signUp">
+        <div class="grid-container">
+            <div class="GroupPicture">
+            <img src={image2} alt="" className="group"/>
+            </div>
+
+             <div class="SignUp">
+             <form onSubmit={handleSubmit} className="signUp">
+                <img src={image} alt="" className="logo"/>
+               
                 <h1> Sign Up To Try Your Next Byte </h1>
                 <input type="text" placeholder="First Name" required {...firstName}/>
                 <input type="text" placeholder="Last Name" required {...lastName}/>
@@ -52,11 +62,15 @@ const SignUp = () => {
                 <h5>Upload Profile Picture</h5>
                 <input type="file" accept ="image/*" {...userPic} />
                 <input type="submit" className="submit"/>
+                
             </form>
             <form className="user">
                 <h6>Already Have An Account? Click Here</h6>
             </form>
+
+             </div>
         </div>
+       
     )
 }
 
