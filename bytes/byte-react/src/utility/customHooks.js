@@ -13,6 +13,15 @@ export const useInputs = (initialValue) => {
     }
     return { value, onChange: handleChange}
 }
+export  const useStateWithLocalStorage = localStorageKey => {
+    const [value, setValue] = React.useState(
+      localStorage.getItem(localStorageKey) || ''
+    );
+    React.useEffect(() => {
+      localStorage.setItem(localStorageKey, value);
+    }, [value]);
+    return [value, setValue];
+  };
 
 // //should do a get axios
 // export const fetchData = (url, initialValue) => {
