@@ -1,6 +1,7 @@
 .App {
   display: flex;
-  background-color: lightblue;
+  background: rgb(230,151,151);
+  background: linear-gradient(90deg, rgba(230,151,151,0.8813900560224089) 40%, rgba(230,159,151,0.1474964985994398) 73%, rgba(230,159,151,1) 100%);
   flex-direction: column;
   text-align: center;
   height: 100vh;
