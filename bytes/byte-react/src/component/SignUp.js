@@ -1,6 +1,6 @@
 import React from "react";
-import useInputs from "../utility/customHooks"
-import {useHistory} from react-router-dom
+import { useInputs } from "../utility/customHooks";
+import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
     const firstName = useInputs("")
@@ -18,7 +18,7 @@ const SignUp = () => {
 
     return (
         <div>
-            <Form onSubmit = {handleSubmit}>
+            <form>
             <label>
             Enter First Name: <input type="text" {...firstName}/>
             Enter Last Name: <input type="text" {...lastName}/>
@@ -34,7 +34,7 @@ const SignUp = () => {
 
 
 
-            </Form>
+            </form>
         </div>
     )
 }
