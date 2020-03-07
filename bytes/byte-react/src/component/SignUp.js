@@ -5,9 +5,10 @@ import { useHistory } from "react-router-dom";
 import image from './../css/Assets/bytesLogo.jpg'
 import image2 from '../css/Assets/group.jpg'
 
+  import {Link} from "react-router-dom"
 import "../css/SignUp.css"
 import axios from "axios";
-import LogIn from "./LogIn";
+// import LogIn from "./LogIn";
 
 const SignUp = () => {
     const firstName = useInputs("")
@@ -40,9 +41,7 @@ const SignUp = () => {
         }
 
     }
-    // const handleLogIn =  ()=>{
-    //     <LogIn/>
-    // }
+  
     return (
         <div class="grid-container">
             <div class="GroupPicture">
@@ -61,11 +60,14 @@ const SignUp = () => {
                 <input type="text" placeholder="Email" required {...email}/>
                 <h5>Upload Profile Picture</h5>
                 <input type="file" accept ="image/*" {...userPic} />
+                <Link to="/login" className="login">
                 <input type="submit" className="submit"/>
+
+                </Link>
                 
             </form>
             <form className="user">
-                <h6>Already Have An Account? Click Here</h6>
+                <Link to="/login" className="button">Have An Account? Click Here</Link>
             </form>
 
              </div>
