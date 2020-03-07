@@ -12,10 +12,10 @@ import SignUp from './component/SignUp'
 function App() {
   return (
     <div className="App">
-    <NavBar/>
     <Switch>
+      <Route exact path={"/SignUp"} component={SignUp}/>
+    <NavBar/>
       <Route exact path={"/"} component={Home}/>
-      <Route exact path={"/signup"} component={SignUp}/>
       <Route path={"/login"} component={LogIn}/>
       <Route path={"/profile"} component={Profile}/>
       <Route component={Error} />
