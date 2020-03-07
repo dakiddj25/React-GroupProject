@@ -1,6 +1,7 @@
 import React from "react";
 import { useInputs } from "../utility/customHooks";
 import { useHistory } from "react-router-dom";
+import "../css/SignUp.css"
 
 const SignUp = () => {
     const firstName = useInputs("")
@@ -17,23 +18,14 @@ const SignUp = () => {
 
 
     return (
-        <div>
+        <div className="body">
             <form>
-            <label>
-            Enter First Name: <input type="text" {...firstName}/>
-            Enter Last Name: <input type="text" {...lastName}/>
-            Enter User Name: <input type="text" {...userName}/>
-            Create A Password: <input type="text" {...password}/>
-            Enter Emai; : <input type="text" {...email}/>
-            Choose a Profile Picture  <input type="text" {...userPic}/>
-
-
-            </label>
-
-
-
-
-
+                <input type="text" placeholder="First Name" required {...firstName}/>
+                <input type="text" placeholder="Last Name" required {...lastName}/>
+                <input type="text" placeholder="User Name" required {...userName}/>
+                <input type="text" placeholder="Password" type="password" required {...password}/>
+                <input type="text" placeholder="Email" required {...email}/>
+                <input type="text" placeholder="Upload Photo" {...userPic}/>
             </form>
         </div>
     )
