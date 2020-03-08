@@ -47,7 +47,7 @@ const handleSubmit = async (e) =>{
                 <h5>Upload Profile Picture</h5>
                
                 <input type="submit" className="submit"/>
-
+            
                 
                 
             </form>
