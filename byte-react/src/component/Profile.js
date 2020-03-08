@@ -6,7 +6,7 @@ import image from './../css/Assets/bytesLogo.jpg';
 
 const Profile = () => {
 
-    const [userInfo, setUserInfo] = useState("")
+    const [info, setInfo] = useState([])
     const [feed, setFeed] = useState([])
 
 
@@ -15,21 +15,21 @@ const Profile = () => {
     //     let user = localStorage.getItem("currentUser");
     //     debugger
 
-    // const fetchUserInfo = async () => {
-    //     let user = localStorage.getItem("currentUser")
-    //     debugger
-    //     try {
-    //         let res = await axios.get("http://localhost:3001/users/1")
-    //         debugger
-    //         setUserInfo(res.data.payload)
-    //         debugger
-    //     } catch(err){
-    //         console.log(err)
-    //     }
-    // } 
-    //     useEffect(() => {
-    //         fetchUserInfo()
-    //     }, [])
+    const fetchUserInfo = async () => {
+        let user = localStorage.getItem("currentUser")
+        debugger
+        try {
+            let res = await axios.get("http://localhost:3001/users/1")
+            debugger
+            setInfo(res.data.payload)
+            debugger
+        } catch(err){
+            console.log(err)
+        }
+    } 
+        useEffect(() => {
+            fetchUserInfo()
+        }, [])
 
     const fetchUsersFeed = async () => {
 
@@ -50,12 +50,12 @@ const Profile = () => {
         }, [])
 
 
-    // const showInfo = userInfo.map(info => {
-    //     return <div><h2>{info.userName}</h2><img src={info.user_pic} /><h3>Full Name: {info.firstName} {info.lastName}</h3><p>Email : {info.email}</p></div>
-    // })
+    const showInfo = info.map(userInfo => {
+        return <div><h2>{userInfo.userName}</h2><img src={userInfo.user_pic} /><h3>Full Name: {userInfo.firstName} {info.lastName}</h3><p>Email : {userInfo.email}</p></div>
+    })
     const showFeed = feed.map(post => {
         debugger
-        return <div><h3>{post.id}</h3><Image filepath={post.pictures} /><p>{post.captions}</p></div>
+        return <div><h3>{post.id}</h3><img src={post.pictures} /><p>{post.captions}</p></div>
     })
 
 
@@ -73,16 +73,15 @@ const Profile = () => {
                     ProfilePic
                 </div>
                 <div className="userInfo">
-                    <label>
-                    Full Name:
-                    Email:
-                    </label>
+              
                 </div>
             </div>
             <form className="UserFeed">
                 <input type="text" placeholder="Enter A Caption!"/>
                 <input type="file" accept="image/*" />
                 <button> Submit </button>
+
+                {showFeed}
             </form>
             <div class="Empty"></div>
         </div>
