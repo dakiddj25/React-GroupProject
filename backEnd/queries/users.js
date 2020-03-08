@@ -23,7 +23,9 @@ const getSingleUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
     try{
-        let user = await db.one("SELECT * FROM users WHERE username = $1", req.params.username);
+
+        let user = await db.one(`SELECT * FROM users WHERE userName = '${req.body.userName}' AND password = '${req.body.password}'`);
+
         if (!user) {
             res.status(404).json({
                 message: "User doesn't exist!"

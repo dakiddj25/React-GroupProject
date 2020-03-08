@@ -5,7 +5,7 @@ const { getSingleUser ,getUser, createUser, editUser, deleteUser } = require("..
 
 users.get("/:id", getSingleUser);
 
-users.post("/:username", getUser); // get user by username
+users.post("/username", getUser); // get user by username
 
 users.post("/", createUser); 
 

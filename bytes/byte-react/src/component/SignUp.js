@@ -59,6 +59,7 @@ const SignUp = () => {
                 <input type="text" placeholder="Email" required {...email}/>
                 <h5>Upload Profile Picture</h5>
                 <input type="file" accept ="image/*" {...userPic} />
+
                 <input type="submit" className="submit"/>
                 
             </form>
