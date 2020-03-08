@@ -1,6 +1,5 @@
 import React from "react";
 import { useInputs, fetchData } from "../utility/InputHooks";
-import { useHistory } from "react-router-dom";
 
 import image from './../css/Assets/bytesLogo.jpg'
 import image2 from '../css/Assets/group.jpg'
@@ -17,8 +16,6 @@ const SignUp = () => {
     const password = useInputs("")
     const email = useInputs("")
     const userPic = useInputs("")
-
-    const history = useHistory()
     
     const handleSubmit = async (e)=>{
         debugger
@@ -32,8 +29,8 @@ const SignUp = () => {
               email: email.value,
               user_pic: userPic.value
           })
-          localStorage.setItem("currentUser", userName.value)
-          window.location.href = "./login"
+          localStorage.setItem("currentUserID", res.data.user.id)
+            window.location.href = "./"
         }catch(err){
             console.log(err)
         }

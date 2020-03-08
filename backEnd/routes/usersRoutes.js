@@ -5,7 +5,7 @@ const { getSingleUser ,logIn, createUser, editUser, deleteUser } = require("../q
 
 users.get("/:id", getSingleUser);
 
-users.post("/username", logIn); // get user by username
+users.post("/login", logIn); // get user by username
 
 users.post("/", createUser); 
 
