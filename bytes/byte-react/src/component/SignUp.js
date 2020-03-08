@@ -60,7 +60,7 @@ const SignUp = () => {
                 <input type="text" placeholder="Email" required {...email}/>
                 <h5>Upload Profile Picture</h5>
                 <input type="file" accept ="image/*" {...userPic} />
-                <Link to="/login" className="login">
+                <Link to="/homepage" className="login">
                 <input type="submit" className="submit"/>
 
                 </Link>
