@@ -15,6 +15,10 @@ function App() {
     <NavBar/>
     <Switch>
       <Route exact path={"/SignUp"} component={SignUp}/>
+<<<<<<< HEAD
+=======
+      <Route path={"/login"} component={LogIn}/>
+>>>>>>> 95e376af6aceed2a9a2ea4a47dd5fdd3275467d1
       <Route exact path={"/"} component={Home}/>
       <Route path={"/profile"} component={Profile}/>
       <Route exact path={"/login"} component={LogIn}/>
