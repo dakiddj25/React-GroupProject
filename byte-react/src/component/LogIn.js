@@ -13,39 +13,32 @@ const LogIn = () => {
 const handleSubmit = async (e) =>{
     e.preventDefault()
     try{
-        axios.post(
-            "http://localhost:3001/username",
-            
-            {
-                user:{
-                    userName: userName,
-                    password: password
-
-                    }
-                }
-            )
-
+        debugger
+        axios.post("http://localhost:3001/username",{
+                userName: userName,
+                password: password
+            })
+            localStorage.setItem("currentUser", userName.value)
+            window.location.href = "./"
         }catch(err){
             console.log(err)
         }
-        debugger
     }
 
 
 
     return (
-        <div class="grid-container">
-            <div class="GroupPicture">
+        <div className="grid-container">
+            <div className="GroupPicture">
             <img src={image2} alt="" className="group"/>
             </div>
 
-             <div class="login">
+             <div className="login">
              <form className="logInPage" onSubmit = {handleSubmit}>
                 <img src={image} alt="" className="logo"/> 
                 <h1> Log In To Byte Into Your Friend's Culinary Arts. </h1>
                 <input type="text" placeholder="User Name" required {...userName}/>
                 <input type="text" placeholder="Password" type="password" required {...password}/>
-                <h5>Upload Profile Picture</h5>
                
                 <input type="submit" className="submit"/>
             

@@ -31,7 +31,6 @@ const SignUp = () => {
               password: password.value,
               email: email.value,
               user_pic: userPic.value
-
           })
           localStorage.setItem("currentUser", userName.value)
           window.location.href = "./login"
@@ -42,12 +41,12 @@ const SignUp = () => {
     }
   
     return (
-        <div class="grid-container">
-            <div class="GroupPicture">
+        <div className="grid-container">
+            <div className="GroupPicture">
             <img src={image2} alt="" className="group"/>
             </div>
 
-             <div class="SignUp">
+             <div className="SignUp">
              <form onSubmit={handleSubmit} className="signUp">
                 <img src={image} alt="" className="logo"/>
                
@@ -59,9 +58,7 @@ const SignUp = () => {
                 <input type="text" placeholder="Email" required {...email}/>
                 <h5>Upload Profile Picture</h5>
                 <input type="file" accept ="image/*" {...userPic} />
-
                 <input type="submit" className="submit"/>
-                
             </form>
             <form className="user">
                 <Link to="/login" className="button">Have An Account? Click Here</Link>

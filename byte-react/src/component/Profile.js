@@ -11,9 +11,9 @@ const Profile = () => {
 
 
 
-    const fetchUserInfo = async () => {
-        let user = localStorage.getItem("currentUser");
-        debugger
+    // const fetchUserInfo = async () => {
+    //     let user = localStorage.getItem("currentUser");
+    //     debugger
 
     // const fetchUserInfo = async () => {
     //     let user = localStorage.getItem("currentUser")
