@@ -78,12 +78,12 @@ const editUser = async (req, res, next) => {
 
 const createUser = async (req, res, next) => {
     try {
-        let user = await db.none(
-            `INSERT INTO users (firstName, lastName, userName, email, password, user_pic) VALUES('${req.body.firstName}', '${req.body.lastName}', '${req.body.userName}', '${req.body.email}', '${req.body.password}', '${req.body.user_pic}')`)
+        let user = await db.one(
+            `INSERT INTO users (firstName, lastName, userName, email, password, user_pic) VALUES('${req.body.firstName}', '${req.body.lastName}', '${req.body.userName}', '${req.body.email}', '${req.body.password}', '${req.body.user_pic}') RETURNING *`)
         res.status(200).json({
+            user,
             status: "success",
-            message: "added user posts",
-            payload: user
+            message: "added user posts"
         })
     } catch (err){
         res.status(400).json({

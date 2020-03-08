@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import { useInputs, useStateWithLocalStorage } from "../utility/customHooks";
-import image from './../css/Assets/bytesLogo.jpg'
-import image2 from '../css/Assets/group.jpg'
-import {Link} from "react-router-dom"
-import axios from "axios"
+import image from './../css/Assets/bytesLogo.jpg';
+import image2 from '../css/Assets/group.jpg';
+import axios from "axios";
 
 const LogIn = () => {
     localStorage.clear();
@@ -13,7 +12,6 @@ const LogIn = () => {
 const handleSubmit = async (e) =>{
     e.preventDefault();
     try{
-        debugger
         let res = await axios.post("http://localhost:3001/users/login",{
                 userName: userName.value,
                 password: password.value
