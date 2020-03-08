@@ -4,7 +4,7 @@ nav {
     justify-content: space-evenly;
 }
 a:hover{
-    background-color: lime;
+    background-color: lightblue;
     cursor: pointer;
 }
 

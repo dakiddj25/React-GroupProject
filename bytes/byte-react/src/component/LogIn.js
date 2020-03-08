@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useInputs, useStateWithLocalStorage } from "../utility/customHooks";
 import image from './../css/Assets/bytesLogo.jpg'
 import image2 from '../css/Assets/group.jpg'
+import {Link} from "react-router-dom"
 
 const LogIn = () => {
     const userName = useInputs("")
@@ -20,7 +21,10 @@ const LogIn = () => {
                 <input type="text" placeholder="User Name" required {...userName}/>
                 <input type="text" placeholder="Password" type="password" required {...password}/>
                 <h5>Upload Profile Picture</h5>
-               Login <input type="submit" className="submit"/>
+                <Link to="/">
+                <input type="submit" className="submit"/>
+
+                </Link>
                 
             </form>
 
