@@ -1,0 +1,17 @@
+.homepage{
+    display: flex;
+    padding: 15px;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.feedPage{
+    display: flex;
+    flex-direction: column;
+}
+
+/* img{
+    height: 100px;
+    width: 100px;
+    left: 0;
+  }  */
+

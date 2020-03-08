@@ -1,0 +1,42 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+  
+  .Logo { 
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    background-color: rgb(212, 44, 44)
+ }
+  
+  .Banner { 
+    grid-area: 1 / 2 / 2 / 5;
+    background-color: rgb(212, 44, 44)
+    }
+  
+  .NavBar { grid-area: 2 / 1 / 3 / 4; }
+  
+  .UserInfo { 
+    grid-area: 3 / 1 / 7 / 2;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+ }
+  
+  .UserFeed { 
+      grid-area: 3 / 2 / 7 / 3;
+      background-color: white;
+      width: 40vw;
+    }
+  
+  .Empty { 
+    grid-area: 3 / 3 / 7 / 4;
+    background-color: white;
+    width: 20vw;
+    }
+
+  .picture {
+      height: 120px;
+      width: auto;
+  }
