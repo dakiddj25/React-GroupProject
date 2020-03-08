@@ -21,30 +21,19 @@ const getSingleUser = async (req, res, next) => {
     }
 }
 
-const getUser = async (req, res, next) => {
+const logIn = async (req, res, next) => {
     try{
-
         let user = await db.one(`SELECT * FROM users WHERE userName = '${req.body.userName}' AND password = '${req.body.password}'`);
-
-        if (!user) {
-            res.status(404).json({
-                message: "User doesn't exist!"
-            })
-        } else if (user.password !== req.body.password) {
-            res.status(401).json({
-                message: "Password is incorrect!"
-            })
-        } else {
             res.status(200).json({
                 user, 
                 status: "success",
                 message: "USER"
             })
-        }
     } catch (err){
         next(err)
     }
 }
+
 
 const deleteUser = async (req, res, next) => {
     try {
@@ -104,4 +93,4 @@ const createUser = async (req, res, next) => {
     }
 }
 
-module.exports = {getSingleUser, getUser, deleteUser, editUser, createUser}
+module.exports = {getSingleUser, logIn, deleteUser, editUser, createUser}
