@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 
 import image from './../css/Assets/bytesLogo.jpg'
 import image2 from '../css/Assets/group.jpg'
-
   import {Link} from "react-router-dom"
 import "../css/SignUp.css"
 import axios from "axios";
