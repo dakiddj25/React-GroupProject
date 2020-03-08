@@ -5,6 +5,7 @@ import image2 from '../css/Assets/group.jpg'
 import {Link} from "react-router-dom"
 
 const LogIn = () => {
+    localStorage.clear();
     const userName = useInputs("")
     const password = useInputs("")
 

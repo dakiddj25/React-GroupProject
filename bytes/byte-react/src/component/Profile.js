@@ -13,6 +13,7 @@ const Profile = () => {
 
     const fetchUserInfo = async () => {
         let user = localStorage.getItem("currentUser");
+        debugger
         try {
             let res = await axios.post(`http://localhost:3001/users/${user}`);
             setUserName(res.data)
