@@ -23,14 +23,16 @@ const getSingleUser = async (req, res, next) => {
 
 const logIn = async (req, res, next) => {
     try{
-        let user = await db.one(`SELECT * FROM users WHERE userName = '${req.body.userName}' AND password = '${req.body.password}'`);
+        let user = await db.one(
+            `SELECT * FROM users WHERE userName = '${req.body.userName}' AND password = '${req.body.password}'`
+            );
             res.status(200).json({
                 user, 
                 status: "success",
                 message: "USER"
             })
     } catch (err){
-        next(err)
+        next(err);
     }
 }
 
