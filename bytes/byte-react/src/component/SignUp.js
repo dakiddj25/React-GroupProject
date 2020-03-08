@@ -1,5 +1,5 @@
 import React from "react";
-import { useInputs, useStateWithLocalStorage } from "../utility/customHooks";
+import { useInputs, fetchData } from "../utility/InputHooks";
 import { useHistory } from "react-router-dom";
 
 import image from './../css/Assets/bytesLogo.jpg'
@@ -10,6 +10,7 @@ import axios from "axios";
 // import LogIn from "./LogIn";
 
 const SignUp = () => {
+    localStorage.clear();
     const firstName = useInputs("")
     const lastName = useInputs("")
     const userName = useInputs("")
@@ -20,6 +21,7 @@ const SignUp = () => {
     const history = useHistory()
     
     const handleSubmit = async (e)=>{
+        debugger
         e.preventDefault()
         try{
             let res = await axios.post("http://localhost:3001/users", {
@@ -31,10 +33,8 @@ const SignUp = () => {
               user_pic: userPic.value
 
           })
-        localStorage.setItem("currentUser", userName.value)
-        localStorage.getItem("currentUser")
-        console.log(localStorage)
-        
+          localStorage.setItem("currentUser", userName.value)
+          window.location.href = "./login"
         }catch(err){
             console.log(err)
         }
@@ -59,10 +59,8 @@ const SignUp = () => {
                 <input type="text" placeholder="Email" required {...email}/>
                 <h5>Upload Profile Picture</h5>
                 <input type="file" accept ="image/*" {...userPic} />
-                <Link to="/homepage" className="login">
-                <input type="submit" className="submit"/>
 
-                </Link>
+                <input type="submit" className="submit"/>
                 
             </form>
             <form className="user">

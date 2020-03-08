@@ -6,6 +6,7 @@ import {Link} from "react-router-dom"
 import axios from "axios"
 
 const LogIn = () => {
+    localStorage.clear();
     const userName = useInputs("")
     const password = useInputs("")
     

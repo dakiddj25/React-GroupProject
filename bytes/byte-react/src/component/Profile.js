@@ -1,12 +1,19 @@
 import React,{useEffect, useState} from "react";
 import Image from './Image'
 import axios from 'axios';
+import "../css/Profile.css";
+import image from './../css/Assets/bytesLogo.jpg';
 
 const Profile = () => {
 
     const [userInfo, setUserInfo] = useState("")
     const [feed, setFeed] = useState([])
 
+
+
+    const fetchUserInfo = async () => {
+        let user = localStorage.getItem("currentUser");
+        debugger
 
     // const fetchUserInfo = async () => {
     //     let user = localStorage.getItem("currentUser")
@@ -25,6 +32,7 @@ const Profile = () => {
     //     }, [])
 
     const fetchUsersFeed = async () => {
+
         try {
             let res = await axios.get("http://localhost:3001/posts") 
             debugger
@@ -52,20 +60,33 @@ const Profile = () => {
 
 
     return (
-        <>
-        <div className="userInfo">
+        <div className="grid-container">
+            <div className="Logo">
+                <img src={image} alt="" className="picture"/>
+            </div>
+            <div className="Banner"></div>
+            <div className="UserInfo">
+                <div className="userName">
+                    UserName
+                </div>
+                <div className="profilePic">
+                    ProfilePic
+                </div>
+                <div className="userInfo">
+                    <label>
+                    Full Name:
+                    Email:
+                    </label>
+                </div>
+            </div>
+            <form className="UserFeed">
+                <input type="text" placeholder="Enter A Caption!"/>
+                <input type="file" accept="image/*" />
+                <button> Submit </button>
+            </form>
+            <div class="Empty"></div>
         </div>
-        <form>
-        <input type="text" placeholder="Enter A Caption!"/>
-        <input type="file" accept="image/*" />
-        <button> Submit </button>
-        </form>
-        <div className="feed">
-        UserFeed
-        {showFeed}
-        </div>
-        
-        </>
+
     )
 }
 

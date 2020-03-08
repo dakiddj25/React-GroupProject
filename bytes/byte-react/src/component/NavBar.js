@@ -5,10 +5,9 @@ import "../css/NavBar.css";
 const NavBar = () => {
     return(
         <nav>
-            <NavLink exact to={"/"}>Home</NavLink>
-            <NavLink to={"/profile"}>Profile</NavLink>
-            <NavLink to={"/login"}>Sign Out</NavLink>
-            
+            <NavLink className="links" exact to={"/"}>Home</NavLink>
+            <NavLink className="links" to={"/profile"}>Profile</NavLink>
+            <NavLink className="links" to={"/login"}>Sign Out</NavLink>
         </nav>
     )
 }
