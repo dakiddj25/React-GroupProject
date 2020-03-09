@@ -21,7 +21,7 @@ const Profile = () => {
         try {
             let res = await axios.get("http://localhost:3001/users/1")
             debugger
-            setInfo(res.data.payload)
+            setInfo(Object.values(res.data))
             debugger
         } catch(err){
             console.log(err)
@@ -49,9 +49,10 @@ const Profile = () => {
             fetchUsersFeed()
         }, [])
 
-
-    const showInfo = info.map(userInfo => {
-        return <div><h2>{userInfo.userName}</h2><img src={userInfo.user_pic} /><h3>Full Name: {userInfo.firstName} {info.lastName}</h3><p>Email : {userInfo.email}</p></div>
+    
+    let  showInfo = info.map(user => {
+        debugger
+        return <div><h2>{user.username}</h2><img src={user.user_pic} /><h3>Full Name: {user.firstname} {user.lastname}</h3><p>Email : {user.email}</p></div>
     })
     const showFeed = feed.map(post => {
         debugger
@@ -66,7 +67,7 @@ const Profile = () => {
             </div>
             <div className="Banner"></div>
             <div className="UserInfo">
-                <div className="userName">
+                {/* <div className="userName">
                     UserName
                 </div>
                 <div className="profilePic">
@@ -74,7 +75,8 @@ const Profile = () => {
                 </div>
                 <div className="userInfo">
               
-                </div>
+                </div> */}
+                {showInfo}
             </div>
             <form className="UserFeed">
                 <input type="text" placeholder="Enter A Caption!"/>

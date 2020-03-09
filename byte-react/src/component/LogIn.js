@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import { useInputs, useStateWithLocalStorage } from "../utility/customHooks";
-import image from './../css/Assets/bytesLogo.jpg'
-import image2 from '../css/Assets/group.jpg'
-import {Link} from "react-router-dom"
-import axios from "axios"
+import image from './../css/Assets/bytesLogo.jpg';
+import image2 from '../css/Assets/group.jpg';
+import axios from "axios";
 
 const LogIn = () => {
     localStorage.clear();
@@ -11,14 +10,13 @@ const LogIn = () => {
     const password = useInputs("")
     
 const handleSubmit = async (e) =>{
-    e.preventDefault()
+    e.preventDefault();
     try{
-        debugger
-        axios.post("http://localhost:3001/username",{
-                userName: userName,
-                password: password
+        let res = await axios.post("http://localhost:3001/users/login",{
+                userName: userName.value,
+                password: password.value
             })
-            localStorage.setItem("currentUser", userName.value)
+            localStorage.setItem("currentUserID", res.data.user.id)
             window.location.href = "./"
         }catch(err){
             console.log(err)
@@ -39,11 +37,7 @@ const handleSubmit = async (e) =>{
                 <h1> Log In To Byte Into Your Friend's Culinary Arts. </h1>
                 <input type="text" placeholder="User Name" required {...userName}/>
                 <input type="text" placeholder="Password" type="password" required {...password}/>
-               
-                <input type="submit" className="submit"/>
-            
-                
-                
+                <input type="submit" className="submit"/> 
             </form>
 
              </div>
