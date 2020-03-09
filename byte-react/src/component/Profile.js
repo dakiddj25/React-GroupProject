@@ -17,12 +17,9 @@ const Profile = () => {
 
     const fetchUserInfo = async () => {
         let user = localStorage.getItem("currentUser")
-        debugger
         try {
             let res = await axios.get("http://localhost:3001/users/1")
-            debugger
             setInfo(Object.values(res.data))
-            debugger
         } catch(err){
             console.log(err)
         }
@@ -35,10 +32,7 @@ const Profile = () => {
 
         try {
             let res = await axios.get("http://localhost:3001/posts/1") 
-            debugger
             setFeed(res.data.payload)
-            debugger
-
 
         }catch(err){
             console.log(err)
@@ -51,11 +45,15 @@ const Profile = () => {
 
     
     let  showInfo = info.map(user => {
-        debugger
-        return <div><h2>{user.username}</h2><img src={user.user_pic} /><h3>Full Name: {user.firstname} {user.lastname}</h3><p>Email : {user.email}</p></div>
+        return (
+        <div><h2>{user.username}</h2>
+        <img src={user.user_pic} />
+        <h3>{user.firstname} {user.lastname}</h3>
+        <p>{user.email}</p>
+        </div>
+        )
     })
     const showFeed = feed.map(post => {
-        debugger
         return <div><h3>{post.id}</h3><img src={post.pictures} /><p>{post.captions}</p></div>
     })
 
