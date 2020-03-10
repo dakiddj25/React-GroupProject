@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios"
+import { useInputs, fetchData } from "../utility/InputHooks";
+import SearchBar from "./helpme/hashtagSearch"
 import "../css/home.css"
 
 
@@ -8,6 +10,7 @@ const Home = () => {
     
 const [userProfilepic , setUserProfilePic] = useState("")
 const [allFeeds , setallFeeds] = useState([])
+
 
 const getUserProfilePic = async()=> {
     try{
@@ -68,25 +71,36 @@ let caption = feed.captions
   
  
 
- const searchBar = () => { // create a component for search bar
-    return (
-        <div>
-            <input type = "text" placeholder = "Search by HashTag"/>
-            <button>Search</button>
-        </div> //Button onClick runs the searchbar component
-    )
- }
+//  const searchBar = async (e) => { // create a component for search bar
+        
+//         e.preventDefault()
+//         try{
+//             let res = await axios.post("http://localhost:3001/hashtags/", {hashtag: hashtag.value})
+//         }catch(err){
+//             console.log(err)
+//         }
+//     return (
+//         <div>
+//             <form onSubmit = {searchBar}>
+
+//             <input type = "text" placeholder = "Search by HashTag"  required {...hashtag}/>
+//             <input type="submit" className="filter">Search</input>
+//             </form>
+//         </div> //Button onClick runs the searchbar component
+//     )
+//  }
 
  let userInfor = displayProfilePic()
  let feedspage = displayFeeds
- let search = searchBar()
+//  let search = searchBar()
 
     return (
         <div className="homepage">
             
             {userInfor}
             {feedspage}
-            {search}
+            <SearchBar/>
+            
         </div>
     )
 }

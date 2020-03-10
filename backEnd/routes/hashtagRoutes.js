@@ -1,8 +1,8 @@
 const hashtag = require("express").Router();
-const { getHashtagById, createHashtag, deleteHashtag } = require("../queries/hashtags");
+const { getHashtagByHashtag, createHashtag, deleteHashtag } = require("../queries/hashtags");
 
 
-hashtag.get("/:id", getHashtagById);
+hashtag.post("/getHashtag", getHashtagByHashtag);
 
 hashtag.post("/", createHashtag);
 
