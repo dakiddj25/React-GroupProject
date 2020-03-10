@@ -10,8 +10,9 @@ const Profile = () => {
     const [info, setInfo] = useState([])
     const [feed, setFeed] = useState([])
     const captions = useInputs("")
-    const pictures = useInputs("")
-    const user_id = useInputs("")
+    const [pictures, setPictures] = useState("")
+    const users_id= useInputs("")
+
 
 
 
@@ -20,7 +21,7 @@ const Profile = () => {
     //     debugger
 
     const fetchUserInfo = async () => {
-        let user = localStorage.getItem("currentUser")
+        // let user = localStorage.getItem("currentUser")
         try {
             let res = await axios.get(`http://localhost:3001/users/1`)
             setInfo(Object.values(res.data))
@@ -47,36 +48,34 @@ const Profile = () => {
             fetchUsersFeed()
         }, [])
 
-    const createNewPost = async () => {
+    const handleSubmit = async (e) => {
+        setPictures(e.target.file)
+        debugger
         try {
             let res = await axios.post("http://localhost:3001/posts/", {
-                user_id: user_id.value,
+                id: users_id.value,
                 pictures: pictures.value,
-                captions: captions.value,
+                caption: captions.value,
             })
-            debugger
 
         }catch(err){
             console.log(err)
+            debugger
         }
     }
-
-    useEffect(() => {
-        createNewPost()
-    })
 
     
     let  showInfo = info.map(user => {
         return (
         <div><h2>{user.username}</h2>
-        <img src={user.user_pic} />
+        <img src={user.user_pic} alt="" />
         <h3>{user.firstname}{user.lastname}</h3>
         <p>{user.email}</p>
         </div>
         )
     })
     const showFeed = feed.map(post => {
-        return <div><h3>{post.id}</h3><img src={post.pictures} /><p>{post.captions}</p></div>
+        return <div><h3>{post.id}</h3><img src={post.pictures} alt=""/><p>{post.captions}</p></div>
     })
 
 
@@ -89,7 +88,7 @@ const Profile = () => {
             <div className="UserInfo">
                 {showInfo}
             </div>
-            <form className="UserFeed">
+            <form onSubmit ={handleSubmit} className="UserFeed">
                 <input type="text" placeholder="Enter A Caption!" {...captions}/>
                 <input type="file" accept="image/*"/>
                 <button> Post Bytes </button>
