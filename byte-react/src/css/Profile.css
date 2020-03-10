@@ -7,7 +7,7 @@
   .Logo { 
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
-    background-color: rgb(212, 44, 44)
+    background-color: rgb(212, 44, 44);
  }
   
   .Banner { 
@@ -39,4 +39,9 @@
   .picture {
       height: 120px;
       width: auto;
+  }
+
+  input {
+    width: 70%;
+    border-radius: 25px;
   }
