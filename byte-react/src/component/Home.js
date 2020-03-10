@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios"
 import "../css/home.css"
+import addPost from './helpme/addPost'
 
 
 
@@ -11,8 +12,9 @@ const [allFeeds , setallFeeds] = useState([])
 
 const getUserProfilePic = async()=> {
     try{
-        let user = localStorage.getItem("currentUser")
-        let res = await axios.get("http://localhost:3001/users/2")
+        let user = localStorage.getItem("currentUserID")
+        
+        let res = await axios.get(`http://localhost:3001/users/${user}`)
 
         setUserProfilePic(res.data.payload.user_pic)
 
@@ -32,8 +34,13 @@ const getUserProfilePic = async()=> {
         return (
             <div className = "profilePic">
                 <img src = {propic}></img>
-                <br/>
-                <button>Create a post</button>
+                
+                <form onSubmit = {addPost}>
+                    <input name= "caption" type = "text" placeholder = "caption"/>
+                    <input name = "image" type= "file" accept = "image/*"/>
+                    <button>submit</button>
+                </form>
+                {/* <button onClick = {addPost}>Create a post</button> */}
             </div>
         )
   
@@ -41,7 +48,7 @@ const getUserProfilePic = async()=> {
 
  const getFeeds = async()=> {
     try{
-        let user = localStorage.getItem("currentUser")
+        let user = localStorage.getItem("currentUserID")
         let res = await axios.get("http://localhost:3001/posts") 
         setallFeeds(res.data.payload)// set it in the state
         // debugger
@@ -56,13 +63,13 @@ const getUserProfilePic = async()=> {
 
  const displayFeeds = allFeeds.map(feed => {
 // debugger
-let caption = feed.captions
+
            return (
-               <div className = "FeedPage" key = {feed.id}>
+               <>
                <h1>feed</h1>
                    <img src = {feed.pictures}></img>
                    <label>{feed.captions}</label>
-               </div>
+              </>
            )
        })
   
@@ -85,7 +92,7 @@ let caption = feed.captions
         <div className="homepage">
             
             {userInfor}
-            {feedspage}
+            <div className = "FeedPage" > {feedspage} </div>
             {search}
         </div>
     )
