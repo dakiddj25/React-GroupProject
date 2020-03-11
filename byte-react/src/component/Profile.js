@@ -3,22 +3,14 @@ import axios from 'axios';
 import "../css/Profile.css";
 import image from './../css/Assets/bytesLogo.jpg';
 import { useInputs } from "../utility/InputHooks";
+import CreatePost from "./CreatePost"
 
 
 const Profile = () => {
 
     const [info, setInfo] = useState([])
     const [feed, setFeed] = useState([])
-    const captions = useInputs("")
-    const [pictures, setPictures] = useState("")
-    const users_id= useInputs("")
 
-
-
-
-    // const fetchUserInfo = async () => {
-    //     let user = localStorage.getItem("currentUser");
-    //     debugger
 
     const fetchUserInfo = async () => {
         // let user = localStorage.getItem("currentUser")
@@ -34,9 +26,11 @@ const Profile = () => {
         }, [])
 
     const fetchUsersFeed = async () => {
+        debugger
 
         try {
             let res = await axios.get("http://localhost:3001/posts/1") 
+            debugger
             setFeed(res.data.payload)
 
         }catch(err){
@@ -48,21 +42,6 @@ const Profile = () => {
             fetchUsersFeed()
         }, [])
 
-    const handleSubmit = async (e) => {
-        setPictures(e.target.file)
-        debugger
-        try {
-            let res = await axios.post("http://localhost:3001/posts/", {
-                id: users_id.value,
-                pictures: pictures.value,
-                caption: captions.value,
-            })
-
-        }catch(err){
-            console.log(err)
-            debugger
-        }
-    }
 
     
     let  showInfo = info.map(user => {
@@ -88,13 +67,10 @@ const Profile = () => {
             <div className="UserInfo">
                 {showInfo}
             </div>
-            <form onSubmit ={handleSubmit} className="UserFeed">
-                <input type="text" placeholder="Enter A Caption!" {...captions}/>
-                <input type="file" accept="image/*"/>
-                <button> Post Bytes </button>
+                <CreatePost />
+            <div className="Empty">
                 {showFeed}
-            </form>
-            <div class="Empty"></div>
+            </div>
         </div>
 
     )

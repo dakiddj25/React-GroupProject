@@ -1,19 +1,20 @@
 const db = require('../db/index')
 
 
-const getHashtagById = async (req, res, next) => {
+const getHashtagByHashtag = async (req, res, next) => {
     try {
-        let {hashtagId} = req. params;
-        let hashtag = await db.one("SELECT * FROM hashtags WHERE id=$1", hashtagId);
+        let hashtagId = req.body.hashtag
+        console.log(hashtagId);
+        let hashtag = await db.any(`SELECT * FROM hashtags JOIN posts ON hashtags.post_id = posts.id  WHERE hashtag LIKE '%${hashtagId}%'`);
         res.status(200).json({
             status: "success",
             message: "all users posts",
             payload: hashtag
         })
-    } catch (err){j
+    } catch (err){
         res.status(400).json({
             status: "Error",
-            message: "Error",
+            message: "Not Getting Hashtag",
             payload: err
         })
         next()
@@ -22,7 +23,7 @@ const getHashtagById = async (req, res, next) => {
 
 const deleteHashtag = async (req, res, next) => {
     try {
-        let {hashtagId} = req.params.id;
+        let hashtagId = req.params.id;
         let hashtag = ("DELETE FROM hastags WHERE id=$1 RETURNING *", hashtagId)
         res.status(200).json({
             status: "success",
@@ -59,4 +60,4 @@ const createHashtag = async (req, res, next) => {
     }
 }
 
-module.exports = {getHashtagById, deleteHashtag, createHashtag}
+module.exports = {getHashtagByHashtag, deleteHashtag, createHashtag}
