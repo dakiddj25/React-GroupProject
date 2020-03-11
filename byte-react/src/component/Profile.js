@@ -3,22 +3,15 @@ import axios from 'axios';
 import "../css/Profile.css";
 import image from './../css/Assets/bytesLogo.jpg';
 import { useInputs } from "../utility/InputHooks";
+import CreatePost from "./CreatePost"
+import Popup from 'reactjs-popup';
 
 
 const Profile = () => {
 
     const [info, setInfo] = useState([])
     const [feed, setFeed] = useState([])
-    const captions = useInputs("")
-    const [pictures, setPictures] = useState("")
-    const users_id= useInputs("")
 
-
-
-
-    // const fetchUserInfo = async () => {
-    //     let user = localStorage.getItem("currentUser");
-    //     debugger
 
     const fetchUserInfo = async () => {
         // let user = localStorage.getItem("currentUser")
@@ -27,20 +20,21 @@ const Profile = () => {
             setInfo(Object.values(res.data))
         } catch(err){
             console.log(err)
+            setInfo([])
         }
     } 
         useEffect(() => {
             fetchUserInfo()
         }, [])
 
-    const fetchUsersFeed = async () => {
 
+    const fetchUsersFeed = async () => {
         try {
             let res = await axios.get("http://localhost:3001/posts/1") 
             setFeed(res.data.payload)
-
         }catch(err){
             console.log(err)
+            setFeed([])
         }
     }
 
@@ -48,21 +42,6 @@ const Profile = () => {
             fetchUsersFeed()
         }, [])
 
-    const handleSubmit = async (e) => {
-        setPictures(e.target.file)
-        debugger
-        try {
-            let res = await axios.post("http://localhost:3001/posts/", {
-                id: users_id.value,
-                pictures: pictures.value,
-                caption: captions.value,
-            })
-
-        }catch(err){
-            console.log(err)
-            debugger
-        }
-    }
 
     
     let  showInfo = info.map(user => {
@@ -87,14 +66,24 @@ const Profile = () => {
             <div className="Banner"></div>
             <div className="UserInfo">
                 {showInfo}
-            </div>
-            <form onSubmit ={handleSubmit} className="UserFeed">
-                <input type="text" placeholder="Enter A Caption!" {...captions}/>
-                <input type="file" accept="image/*"/>
-                <button> Post Bytes </button>
+           
+            <Popup trigger={<button>Change Profile</button>} position="right center">
+            <div>
+                <form>
+                    <label>
+                    Edit Info
+                    </label>
+                    <input type="text" placeholder="Change Username"/>
+                    <input type="file"/>
+                    <input type="submit"/>
+                 </form>
+            </div>
+            </Popup>
+            </div>
+                <CreatePost />
+            <div className="Empty">
                 {showFeed}
-            </form>
-            <div class="Empty"></div>
+            </div>
         </div>
 
     )

@@ -20,4 +20,3 @@ const SearchBar=({handleSubmit})=>{
 
 
  export default SearchBar
-
