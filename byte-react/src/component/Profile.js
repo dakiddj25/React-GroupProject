@@ -3,6 +3,7 @@ import axios from 'axios';
 import "../css/Profile.css";
 import image from './../css/Assets/bytesLogo.jpg';
 import { useInputs } from "../utility/InputHooks";
+import Popup from 'reactjs-popup';
 
 
 const Profile = () => {
@@ -15,10 +16,6 @@ const Profile = () => {
 
 
 
-
-    // const fetchUserInfo = async () => {
-    //     let user = localStorage.getItem("currentUser");
-    //     debugger
 
     const fetchUserInfo = async () => {
         // let user = localStorage.getItem("currentUser")
@@ -48,24 +45,11 @@ const Profile = () => {
             fetchUsersFeed()
         }, [])
 
-    const handleSubmit = async (e) => {
-        setPictures(e.target.file)
-        debugger
-        try {
-            let res = await axios.post("http://localhost:3001/posts/", {
-                id: users_id.value,
-                pictures: pictures.value,
-                caption: captions.value,
-            })
 
-        }catch(err){
-            console.log(err)
-            debugger
-        }
-    }
+
 
     
-    let  showInfo = info.map(user => {
+    const showInfo = info.map(user => {
         return (
         <div><h2>{user.username}</h2>
         <img src={user.user_pic} alt="" />
@@ -78,6 +62,10 @@ const Profile = () => {
         return <div><h3>{post.id}</h3><img src={post.pictures} alt=""/><p>{post.captions}</p></div>
     })
 
+    const handleEditClick = () => {
+
+    }
+
 
     return (
         <div className="grid-container">
@@ -87,12 +75,26 @@ const Profile = () => {
             <div className="Banner"></div>
             <div className="UserInfo">
                 {showInfo}
+                <Popup trigger={<button>Change Profile</button>} position="right center">
+                    <div>
+                        <form>
+                            <label>
+                            Edit Info
+                            </label>
+                            <input type="text" placeholder="Change Username"/>
+                            <input type="file"/>
+                            <input type="submit"/>
+                        </form>
+                    </div>
+                </Popup>
             </div>
-            <form onSubmit ={handleSubmit} className="UserFeed">
+            <form className="UserFeed" >
                 <input type="text" placeholder="Enter A Caption!" {...captions}/>
                 <input type="file" accept="image/*"/>
                 <button> Post Bytes </button>
                 {showFeed}
+            
+                <button onClick={handleEditClick}>Edit</button>
             </form>
             <div class="Empty"></div>
         </div>
