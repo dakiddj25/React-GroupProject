@@ -75,6 +75,7 @@ const Profile = () => {
             <div className="Banner"></div>
             <div className="UserInfo">
                 {showInfo}
+                <di
                 <Popup trigger={<button>Change Profile</button>} position="right center">
                     <div>
                         <form>
