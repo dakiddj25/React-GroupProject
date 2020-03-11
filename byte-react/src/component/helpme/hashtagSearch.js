@@ -1,47 +1,21 @@
-import React,{useState} from "react"
+import React,{ useState } from "react"
 import axios from "axios"
-import { useInputs, fetchData } from "../../utility/InputHooks";
+import { useInputs, fetchData } from "../../utility/customHooks";
+import FindHashTag from "./feedIndex"
 
 // SELECT * FROM hashtags WHERE hashtag LIKE '%cor%'
 
-const SearchBar=()=>{
-    
-    
+const SearchBar=({handleSubmit})=>{   
     const hashtag = useInputs("")
-    const [results, setResults] = useState([])
-
-    
-    const getHashTag = async (e) => { // create a component for search bar
+    const handleFormSubmit = (e) =>{
         e.preventDefault()
-        debugger
-        try{
-            let res = await axios.post("http://localhost:3001/hashtag/getHashtag/", {hashtag: hashtag.value})
-            setResults(res.data.payload)
-        }catch(err){
-            console.log(err)
-        }
-
+        handleSubmit(hashtag.value)
     }
-    const displayResults = results.map(result=>{
-        return(
-            
-            <div className="post" key={result.id}>
-                <img src= {result.pictures}></img>
-                <label>{result.captions}</label>
-            </div>
-        )
-    })
-        return (
-            
-            <div>
-            <form onSubmit={getHashTag}>
-            <input type = "text" placeholder = "Search by HashTag" required {...hashtag}/>
-            <input type="submit" className="hastag"/>
-            {displayResults}
-            </form>
-        </div> //Button onClick runs the searchbar component
+    return(
+        <form onSubmit={handleFormSubmit}>
+            <input {...hashtag}/>
+        </form> 
     )
-
 }
 
 
