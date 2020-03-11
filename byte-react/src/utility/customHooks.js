@@ -8,7 +8,6 @@ export const useInputs = (initialValue) => {
     const [value, setValue] = useState(initialValue);
 
     const handleChange = (e) => {
-        console.log(e.target.value);
         setValue(e.target.value);
     }
     return { value, onChange: handleChange}

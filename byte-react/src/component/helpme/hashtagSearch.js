@@ -1,12 +1,23 @@
-import React, {useState} from "react"
+import React,{ useState } from "react"
+import axios from "axios"
+import { useInputs, fetchData } from "../../utility/customHooks";
+import FindHashTag from "./feedIndex"
 
+// SELECT * FROM hashtags WHERE hashtag LIKE '%cor%'
 
-
-const searchBar = () => { // create a component for search bar
-    return (
-        <div>
-            <input type = "text" placeholder = "Search by HashTag"/>
-            <button>Search</button>
-        </div> //Button onClick runs the searchbar component
+const SearchBar=({handleSubmit})=>{   
+    const hashtag = useInputs("")
+    const handleFormSubmit = (e) =>{
+        e.preventDefault()
+        handleSubmit(hashtag.value)
+    }
+    return(
+        <form onSubmit={handleFormSubmit}>
+            <input {...hashtag}/>
+        </form> 
     )
- }
+}
+
+
+ export default SearchBar
+
