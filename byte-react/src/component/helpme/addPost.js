@@ -28,23 +28,12 @@ const postPicture = async(e)=> {
             debugger
             let postID = res.data.payload.id
 
-            if(caption.includes("#")){
-                for(let i= 0; i < caption.length; i++){
-                    if(caption[i] === "#"){
-                        let newhash = caption.slice(i)
-                            // debugger
-                            try{
-                                let res = await axios.post(`http://localhost:3001/hashtags/`,{ post_id:postID, hashtag:newhash });
-                                    debugger
-                          
-                            } catch (err){
-                                debugger
-                                console.log(err)
-                            }
-                    }
-                }
-        
-            }
+            const arrOfCaption = caption.split(' ');
+
+            
+
+getHashtag(arrOfCaption,postID)
+//returns hastag word that can be pushed into a axios post
   
     } catch (err){
         debugger
@@ -52,14 +41,23 @@ const postPicture = async(e)=> {
     }
  }
 
- const createHashtag =  (caption) => {
+ const getHashtag = async (arr, postID) => {
+     let newhash = ""
+     arr.forEach((word) =>{
+         if(word[0] === "#"){
+             console.log(word)
+             newhash = word
+      }
+    })
+    try{
+        let res2 = await axios.post(`http://localhost:3001/hashtags/`,{ post_id:postID, hashtag:newhash });
+          debugger
 
-    if(caption.includes("#")){
-        debugger
-
-    }
-
- }
+  } catch (err){
+      debugger
+      console.log(err)
+  }
+  }
 
 
 
