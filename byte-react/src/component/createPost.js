@@ -5,17 +5,16 @@ import { useInputs } from "../utility/InputHooks";
 const CreatePost = () => {
     const caption = useInputs("")
     const [picture, setPicture] = useState("")
-    const [loading, setLoading] = useState(false);
 
     // const user_id= localStorage.getItem("currentUser")
 
     const uploadPicture = async (e) => {
         const file = e.target.file[0];
-        const formData = new FormData();    
+        const formData = new FormData(); 
         
         formData.append('upload_preset', file);
         let res = await axios.get("https://res.cloudinary.com/dbhncpu02/image/upload/");
-
+        setPicture()
 
         
     }

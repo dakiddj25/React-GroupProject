@@ -4,6 +4,7 @@ import "../css/Profile.css";
 import image from './../css/Assets/bytesLogo.jpg';
 import { useInputs } from "../utility/InputHooks";
 import CreatePost from "./CreatePost"
+import Popup from 'reactjs-popup';
 
 
 const Profile = () => {
@@ -19,6 +20,7 @@ const Profile = () => {
             setInfo(Object.values(res.data))
         } catch(err){
             console.log(err)
+            setInfo([])
         }
     } 
         useEffect(() => {
@@ -32,6 +34,7 @@ const Profile = () => {
             setFeed(res.data.payload)
         }catch(err){
             console.log(err)
+            setFeed([])
         }
     }
 
@@ -63,7 +66,20 @@ const Profile = () => {
             <div className="Banner"></div>
             <div className="UserInfo">
                 {showInfo}
-            </div>
+           
+            <Popup trigger={<button>Change Profile</button>} position="right center">
+            <div>
+                <form>
+                    <label>
+                    Edit Info
+                    </label>
+                    <input type="text" placeholder="Change Username"/>
+                    <input type="file"/>
+                    <input type="submit"/>
+                 </form>
+            </div>
+            </Popup>
+            </div>
                 <CreatePost />
             <div className="Empty">
                 {showFeed}
