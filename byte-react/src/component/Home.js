@@ -4,8 +4,10 @@ import { useInputs, fetchData } from "../utility/InputHooks";
 import SearchBar from "./helpme/hashtagSearch"
 import FeedIndex from "./helpme/feedIndex"
 import "../css/home.css"
+import addPost from './helpme/addPost'
 
 const Home = () => {
+
 
     const [posts, setPosts ] = useState([])
     
@@ -30,6 +32,7 @@ const Home = () => {
         <SearchBar handleSubmit={handleSubmit}/>
         <FeedIndex posts={posts}/>
         </>
+
     )
 } 
 

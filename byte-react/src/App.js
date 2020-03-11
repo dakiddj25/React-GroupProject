@@ -18,6 +18,7 @@ function App() {
       <Route path={"/login"} component={LogIn}/>
       <Route exact path={"/"} component={Home}/>
       <Route path={"/profile"} component={Profile}/>
+      <Route exact path={"/login"} component={LogIn}/>
       <Route component={Error} />
     </Switch>
     </div>
