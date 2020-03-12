@@ -1,6 +1,7 @@
 .profile-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* height: 80vh; */
   /* grid-template-rows: 1fr 1fr 1fr; */
 }
 
@@ -36,7 +37,7 @@
     background-color: white;
     flex-direction: column;
     overflow: scroll;
-    height: 68vh;
+    height: 58vh;
     width: 80vw;
   }
   /* .Empty { 
