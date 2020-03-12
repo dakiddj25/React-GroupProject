@@ -9,7 +9,7 @@ import Popup from 'reactjs-popup';
 
 const Profile = () => {
 
-    const [info, setInfo] = useState([])
+    const [info, setInfo] = useState({})
     const [feed, setFeed] = useState([])
 
 
@@ -17,7 +17,7 @@ const Profile = () => {
         // let user = localStorage.getItem("currentUser")
         try {
             let res = await axios.get(`http://localhost:3001/users/1`)
-            setInfo(Object.values(res.data))
+            setInfo(res.data.payload)
         } catch(err){
             console.log(err)
             setInfo([])
@@ -42,47 +42,52 @@ const Profile = () => {
             fetchUsersFeed()
         }, [])
 
+    
+
 
     
-    let  showInfo = info.map(user => {
+    const  showInfo = (obj) =>{
         return (
-        <div><h2>{user.username}</h2>
-        <img src={user.user_pic} alt="" />
-        <h3>{user.firstname}{user.lastname}</h3>
-        <p>{user.email}</p>
-        </div>
+            <div>
+                <h2>{obj.username}</h2>
+                <img src={obj.user_pic} alt="" />
+                <h3>{obj.firstname}{obj.lastname}</h3>
+                <p>{obj.email}</p>
+            </div>
         )
-    })
-    const showFeed = feed.map(post => {
-        return <div><h3>{post.id}</h3><img src={post.pictures} alt=""/><p>{post.captions}</p></div>
-    })
+    }
 
+    const showFeed = feed.map(post => {
+        debugger
+        return <div><img src={post.pictures} className="postPicture" alt=""/><p>{post.captions}</p></div>
+    })
 
     return (
-        <div className="grid-container">
+        <div className="profile-container">
             <div className="Logo">
                 <img src={image} alt="" className="picture"/>
             </div>
             <div className="Banner"></div>
             <div className="UserInfo">
-                {showInfo}
-           
-            <Popup trigger={<button>Change Profile</button>} position="right center">
-            <div>
-                <form>
-                    <label>
-                    Edit Info
-                    </label>
-                    <input type="text" placeholder="Change Username"/>
-                    <input type="file"/>
-                    <input type="submit"/>
-                 </form>
+                {showInfo(info)}
+                <Popup trigger={<button className="Pop">Change Profile</button>} position="right center">
+                    <div>
+                        <form>
+                            <label>
+                            Edit Info
+                            </label>
+                            <input type="text" placeholder="Change Username"/>
+                            <input type="file"/>
+                            <input type="submit"/>
+                         </form>
+                    </div>
+                </Popup>
             </div>
-            </Popup>
-            </div>
+            <div className="UserFeed">
                 <CreatePost />
-            <div className="Empty">
-                {showFeed}
+                <div className="Feed">
+                    {showFeed}
+                </div>
             </div>
         </div>
 

@@ -12,7 +12,8 @@ const CreatePost = () => {
         const file = e.target.file[0];
         const formData = new FormData(); 
         
-        formData.append('upload_preset', file);
+        formData.append('file', file[0])
+        formData.append('upload_preset', 'dbhncpu02');
         let res = await axios.get("https://res.cloudinary.com/dbhncpu02/image/upload/");
         setPicture()
 
