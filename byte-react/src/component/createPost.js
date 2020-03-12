@@ -14,10 +14,12 @@ const CreatePost = () => {
         
         formData.append('file', file[0])
         formData.append('upload_preset', 'dbhncpu02');
-        let res = await axios.get("https://res.cloudinary.com/dbhncpu02/image/upload/");
-        setPicture()
-
-        
+        let res = await axios.get("https://res.cloudinary.com/dbhncpu02/image/upload/", {
+            method: 'Post',
+            body: formData
+        });
+        const picture = await res.json();
+        setPicture(picture.secure_url)
     }
 
 
