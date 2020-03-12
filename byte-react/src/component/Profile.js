@@ -9,7 +9,7 @@ import Popup from 'reactjs-popup';
 
 const Profile = () => {
 
-    const [info, setInfo] = useState([])
+    const [info, setInfo] = useState({})
     const [feed, setFeed] = useState([])
 
 
@@ -17,7 +17,7 @@ const Profile = () => {
         // let user = localStorage.getItem("currentUser")
         try {
             let res = await axios.get(`http://localhost:3001/users/1`)
-            setInfo(Object.values(res.data))
+            setInfo(res.data.payload)
         } catch(err){
             console.log(err)
             setInfo([])
@@ -42,17 +42,22 @@ const Profile = () => {
             fetchUsersFeed()
         }, [])
 
+    
+
 
     
-    let  showInfo = info.map(user => {
+    let  showInfo = (obj) =>{
+        debugger
         return (
-        <div><h2>{user.username}</h2>
-        <img src={user.user_pic} alt="" />
-        <h3>{user.firstname}{user.lastname}</h3>
-        <p>{user.email}</p>
-        </div>
+            <div>
+                <h2>{obj.username}</h2>
+                <img src={obj.user_pic} alt="" />
+                <h3>{obj.firstname}{obj.lastname}</h3>
+                <p>{obj.email}</p>
+            </div>
         )
-    })
+    }
+
     const showFeed = feed.map(post => {
         return <div><h3>{post.id}</h3><img src={post.pictures} alt=""/><p>{post.captions}</p></div>
     })
@@ -65,7 +70,7 @@ const Profile = () => {
             </div>
             <div className="Banner"></div>
             <div className="UserInfo">
-                {showInfo}
+                {showInfo(info)}
            
             <Popup trigger={<button>Change Profile</button>} position="right center">
             <div>
