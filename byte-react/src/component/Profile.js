@@ -46,8 +46,7 @@ const Profile = () => {
 
 
     
-    let  showInfo = (obj) =>{
-        debugger
+    const  showInfo = (obj) =>{
         return (
             <div>
                 <h2>{obj.username}</h2>
@@ -59,35 +58,36 @@ const Profile = () => {
     }
 
     const showFeed = feed.map(post => {
-        return <div><h3>{post.id}</h3><img src={post.pictures} alt=""/><p>{post.captions}</p></div>
+        debugger
+        return <div><img src={post.pictures} className="postPicture" alt=""/><p>{post.captions}</p></div>
     })
 
-
     return (
-        <div className="grid-container">
+        <div className="profile-container">
             <div className="Logo">
                 <img src={image} alt="" className="picture"/>
             </div>
             <div className="Banner"></div>
             <div className="UserInfo">
                 {showInfo(info)}
-           
-            <Popup trigger={<button>Change Profile</button>} position="right center">
-            <div>
-                <form>
-                    <label>
-                    Edit Info
-                    </label>
-                    <input type="text" placeholder="Change Username"/>
-                    <input type="file"/>
-                    <input type="submit"/>
-                 </form>
+                <Popup trigger={<button className="Pop">Change Profile</button>} position="right center">
+                    <div>
+                        <form>
+                            <label>
+                            Edit Info
+                            </label>
+                            <input type="text" placeholder="Change Username"/>
+                            <input type="file"/>
+                            <input type="submit"/>
+                         </form>
+                    </div>
+                </Popup>
             </div>
-            </Popup>
-            </div>
+            <div className="UserFeed">
                 <CreatePost />
-            <div className="Empty">
-                {showFeed}
+                <div className="Feed">
+                    {showFeed}
+                </div>
             </div>
         </div>
 
