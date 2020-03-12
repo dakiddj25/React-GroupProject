@@ -13,7 +13,7 @@ const SearchBar=({handleSubmit})=>{
     }
     return(
         <form onSubmit={handleFormSubmit}>
-            <input {...hashtag}/>
+            <input placeholder = "Search by HashTag"{...hashtag}/>
         </form> 
     )
 }

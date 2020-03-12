@@ -27,3 +27,10 @@ width: 20%;
     left: 0;
   } 
 
+.post{
+    margin-left: 40%;
+    border: 1px solid #ccc;
+    
+    width: 300px;
+}
+

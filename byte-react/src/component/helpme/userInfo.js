@@ -6,7 +6,7 @@ const UserDisplay =({userInfo})=>{
    
         return(
 
-            <div className = "profilePic" key = {userInfo.id}>
+            <div className = "UserInfo" key = {userInfo.id}>
                 <h2>{userInfo.username}</h2>
                <img src = {userInfo.user_pic}></img>
               
