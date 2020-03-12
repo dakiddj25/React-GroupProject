@@ -50,7 +50,7 @@ getHashtag(arrOfCaption,postID)
       }
     })
     try{
-        let res2 = await axios.post(`http://localhost:3001/hashtags/`,{ post_id:postID, hashtag:newhash });
+        let res2 = await axios.post(`http://localhost:3001/hashtag/`,{ post_id:postID, hashtag:newhash });
           debugger
 
   } catch (err){
