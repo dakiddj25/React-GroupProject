@@ -5,22 +5,27 @@ import { useInputs } from "../utility/InputHooks";
 const CreatePost = () => {
     const caption = useInputs("")
     const [picture, setPicture] = useState("")
+    const [loading, setLoading] = useState(false)
 
     // const user_id= localStorage.getItem("currentUser")
 
     const uploadPicture = async (e) => {
-        const file = e.target.file[0];
-        const formData = new FormData(); 
+        const files = e.target.files;
+        const data = new FormData(); 
         
-        formData.append('file', file[0])
-        formData.append('upload_preset', 'dbhncpu02');
-        let res = await axios.get("https://res.cloudinary.com/dbhncpu02/image/upload/", {
+        data.append('file', files[0])
+        data.append('upload_preset', 'BytesReact');
+        data.append('cloud_name', 'dbhncpu02')
+        setLoading(true)
+
+        let res = await fetch("https://api.cloudinary.com/v1_1/dbhncpu02/image/upload", {
             method: 'Post',
-            body: formData
-        });
-        debugger
-        const picture = await res.json();
-        setPicture(picture.secure_url)
+            body: data
+            }
+        )
+        const file = await res.json()
+        setPicture(file.secure_url)
+        setLoading(false)
     }
 
 

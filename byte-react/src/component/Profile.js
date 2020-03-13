@@ -4,7 +4,7 @@ import "../css/Profile.css";
 import image from './../css/Assets/bytesLogo.jpg';
 import { useInputs } from "../utility/InputHooks";
 import CreatePost from "./createPost"
-import Popup from 'reactjs-popup';
+import EditProfile from "./editProfile"
 
 
 const Profile = () => {
@@ -57,7 +57,6 @@ const Profile = () => {
     }
 
     const showFeed = feed.map(post => {
-        debugger
         return <div><img src={post.pictures} className="postPicture" alt=""/><p>{post.captions}</p></div>
     })
 
@@ -69,18 +68,7 @@ const Profile = () => {
             <div className="Banner"></div>
             <div className="UserInfo">
                 {showInfo(info)}
-                <Popup trigger={<button className="Pop">Change Profile</button>} position="right center">
-                    <div>
-                        <form>
-                            <label>
-                            Edit Info
-                            </label>
-                            <input type="text" placeholder="Change Username"/>
-                            <input type="file"/>
-                            <input type="submit"/>
-                         </form>
-                    </div>
-                </Popup>
+                <EditProfile fetchUserInfo= {fetchUserInfo}/>
             </div>
             <div className="UserFeed">
                 <CreatePost />
