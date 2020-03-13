@@ -3,7 +3,7 @@ import axios from 'axios';
 import "../css/Profile.css";
 import image from './../css/Assets/bytesLogo.jpg';
 import { useInputs } from "../utility/InputHooks";
-import CreatePost from "./CreatePost"
+import CreatePost from "./createPost"
 import Popup from 'reactjs-popup';
 
 

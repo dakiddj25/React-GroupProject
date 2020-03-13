@@ -5,7 +5,7 @@ import SearchBar from "./helpme/hashtagSearch"
 import FeedIndex from "./helpme/feedIndex"
 import UserDisplay from "./helpme/userInfo"
 import "../css/home.css"
-import addPost from './helpme/addPost'
+import image from './../css/Assets/bytesLogo.jpg';
 
 const Home = () => {
 
@@ -53,11 +53,17 @@ const Home = () => {
     
 
     return(
-        <>
-        <UserDisplay userInfo = {userInfo} />
-        <SearchBar handleSubmit={handleSubmit} />
-        <FeedIndex posts={posts} />
-        </>
+        <div className="profile-container">
+         <div className="Logo">
+                <img src={image} alt="" className="picture"/>
+            </div>
+            <div className="Banner"></div>
+                <UserDisplay userInfo = {userInfo} />
+            <div className="UserFeed">
+                <SearchBar handleSubmit={handleSubmit} />
+                <FeedIndex posts={posts} />
+            </div>
+        </div>
 
     )
 } 
