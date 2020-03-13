@@ -1,20 +1,28 @@
-import React from "react";
 import axios from "axios"
+import React, {useState} from 'react';
 
 // const [userProfilepic , setUserProfilePic] = useState("")
 // const [allFeeds , setallFeeds] = useState([])
 let user = localStorage.getItem("currentUserID")
 
-const sample = async (e) => {
-    e.preventDefault()
-    
-    let caption =  e.target.caption.value
+// const Sample = async (e) => {
+//     e.preventDefault()
+//     const [image, setImage] = useState('')
+//     const file = e.target.image
+//     const data = new FormData()
 
-    
-    postPicture(e)
-    // createHashtag(e)
+//     data.append('file', file[0])
+//     data.append('upload_prest', 'dbhncpu02')
 
-}
+//     let res = await axios.post("https://res.cloudinary.com/dbhncpu02/image/upload/", {data})
+    
+//     setImage(file.secure_url)
+//     console.log(image)
+//     debugger
+//     // postPicture(e)
+//     // createHashtag(e)
+
+// }
 
 
 const postPicture = async(e)=> {
@@ -58,19 +66,5 @@ getHashtag(arrOfCaption,postID)
       console.log(err)
   }
   }
-
-
-
-// const createPost = () => { // create a component for search bar
-//     return (
-//         <div>
-//         <form onSubmit = {addPost}>
-//             <input type = "text" placeholder = "caption"/>
-//             <input type= "file" accept = "image/*"/>
-//             <button>submit</button>
-//         </form>
-//         </div> //Button onClick runs the searchbar component
-//     )
-//  }
 
 export default postPicture;
