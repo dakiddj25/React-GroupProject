@@ -5,7 +5,6 @@ const UserDisplay =({userInfo})=>{
   debugger
    
         return(
-
             <div className = "UserInfo" key = {userInfo.id}>
                 <h2>{userInfo.username}</h2>
                <img src = {userInfo.user_pic}></img>
@@ -22,4 +21,6 @@ const UserDisplay =({userInfo})=>{
   
 
 }
+
 export default UserDisplay
+

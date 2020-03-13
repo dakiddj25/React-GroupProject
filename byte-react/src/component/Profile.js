@@ -31,6 +31,7 @@ const Profile = () => {
     const fetchUsersFeed = async () => {
         try {
             let res = await axios.get("http://localhost:3001/posts/1") 
+            debugger
             setFeed(res.data.payload)
         }catch(err){
             console.log(err)
@@ -41,8 +42,6 @@ const Profile = () => {
         useEffect(() => {
             fetchUsersFeed()
         }, [])
-
-    
 
 
     
