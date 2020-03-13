@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useInputs } from "../utility/InputHooks";
 import Popup from 'reactjs-popup';
 
-const EditProfile = ({fetchUserInfo}) => {
+const EditProfile = ({fetchUserInfo}) => { 
     const username = useInputs("")
     const [userPic, setUserPic] = useState("")
     const [loading, setLoading] = useState(false)
