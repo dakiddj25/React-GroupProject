@@ -27,6 +27,8 @@ const CreatePost = ({fetchUsersFeed}) => {
         setPicture(file.secure_url)
         setLoading(false)
     }
+
+
     const handlePostSubmit = async (e) => {
         e.preventDefault()
         debugger
@@ -37,31 +39,16 @@ const CreatePost = ({fetchUsersFeed}) => {
                 captions: caption.value
         })
         let postID = res.data.payload.id
+
         setArrCaption(caption.split(' '));
         getHashtag(arrCaption, postID)
+
          fetchUsersFeed();
          debugger
         }catch(err){
             console.log(err)
         }
-    }
-    const getHashtag = async (arr, postID) => {
-        arr.forEach((word) =>{
-            if(word[0] === "#"){
-                console.log(word)
-                setNewHash(word)
-                debugger
-         }
-       })
-       try{
-           let res2 = await axios.post(`http://localhost:3001/hashtag/`, { post_id:postID, hashtag:newHash });
-           debugger
-            fetchUsersFeed()
-     } catch (err){
-         debugger
-         console.log(err)
-     }
-     }
+
     return (
             <form onSubmit ={handlePostSubmit} className="UserFeed">
                 <input type="text" placeholder="Enter A Caption!" {...caption}/>
