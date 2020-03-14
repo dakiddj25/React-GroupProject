@@ -63,7 +63,7 @@ const Home = () => {
             <div className="UserFeed">
                 <div>
                     <h2>Create a Post</h2>
-                    <CreatePost/>
+                    <CreatePost getPosts = {getPosts}/>
                 </div>
                 <div>
                     <h2>Search by Hastag</h2>

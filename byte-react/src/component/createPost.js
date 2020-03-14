@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useInputs } from "../utility/InputHooks";
-const CreatePost = ({fetchUsersFeed, updateFeed}) => {
+const CreatePost = ({fetchUsersFeed, getPosts}) => {
     const caption = useInputs("")
     const [picture, setPicture] = useState("")
     const [loading, setLoading] = useState(false)
-    const [arrCaption, setArrCaption] = useState([])
-    const [newHash, setNewHash] = useState("")
+    // const [arrCaption, setArrCaption] = useState([])
+    // const [newHash, setNewHash] = useState("")
     const user_id= localStorage.getItem("currentUserID")
 
     
@@ -29,7 +29,6 @@ const CreatePost = ({fetchUsersFeed, updateFeed}) => {
 
     const handlePostSubmit = async (e) => {
         e.preventDefault()
-        debugger
         try {
         let res = await axios.post(`http://localhost:3001/posts/`, {
                 user_id: user_id,
@@ -37,29 +36,30 @@ const CreatePost = ({fetchUsersFeed, updateFeed}) => {
                 captions: caption.value
         })
         let postID = res.data.payload.id
-        setArrCaption(caption.value.split(' '));
+        debugger
+        let arrCaption = (caption.value.split(' '));
         getHashtag(arrCaption, postID)
-         fetchUsersFeed();
-         debugger
+        if(getPosts) {
+            getPosts()
+        } else {
+            fetchUsersFeed()
+        }
         }catch(err){
             console.log(err)
         }
     }
 
     const getHashtag = async (arr, postID) => {
+        debugger
+        let newHash
         arr.forEach((word) =>{
             if(word[0] === "#"){
-                console.log(word)
-                setNewHash(word)
-                debugger
+                newHash = word
          }
        })
        try{
            let res2 = await axios.post(`http://localhost:3001/hashtag/`, { post_id:postID, hashtag:newHash });
-           debugger
-            fetchUsersFeed()
      } catch (err){
-         debugger
          console.log(err)
     }
 }
