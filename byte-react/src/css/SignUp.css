@@ -11,6 +11,7 @@
     align-items: center;
     /* margin: auto; */
     margin-left: 40%;
+    object-fit: cover; 
  }
   .SignUp { grid-area: SignUp; 
  }

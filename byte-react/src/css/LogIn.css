@@ -33,6 +33,9 @@
     width: 130%;
      height: 100%;
     margin-bottom: -50%;
-    background-color: #ed9583
-   
+    background-color: #ed9583;
+}
+
+.user{
+  margin-top: 10%;
 }

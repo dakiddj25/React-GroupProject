@@ -4,6 +4,7 @@ import axios from "axios"
 import SearchBar from "./helpme/hashtagSearch"
 import FeedIndex from "./helpme/feedIndex"
 import UserDisplay from "./helpme/userInfo"
+import CreatePost from "../component/createPost";
 import "../css/home.css"
 import image from './../css/Assets/bytesLogo.jpg';
 
@@ -18,7 +19,6 @@ const Home = () => {
         try{
             let res = await axios.post("http://localhost:3001/hashtag/getHashtag", {hashtag: str})
             setPosts(res.data.payload)
-            debugger
         }catch(err){
             console.log(err)
             setPosts([])
@@ -28,7 +28,8 @@ const Home = () => {
     useEffect(()=>{
         getPosts()
     },[])
-    const handleSubmit = (str)=>{getPosts(str)}
+
+    const handleSubmit = (str) =>  {getPosts(str)}
 
     const getUserProfile = async () =>{
         try{
@@ -37,10 +38,8 @@ const Home = () => {
             let res = await axios.get(`http://localhost:3001/users/${user}`)
       
             setUserInfo(res.data.payload)
-            debugger
            // set it in the state
-         } catch (err){
-            debugger
+         } catch (err){ 
             console.log(err)
             setUserInfo([])
 
@@ -54,15 +53,26 @@ const Home = () => {
     
 
     return(
-        <div className="profile-container">
+        <div className="home-container">
          <div className="Logo">
-                <img src={image} className="logo" alt="" />
+                <img src={image} className="picture" alt="" />
             </div>
             <div className="Banner"></div>
+            <div className="UserInfo">
                 <UserDisplay userInfo = {userInfo} />
+            </div>
             <div className="UserFeed">
-                <SearchBar handleSubmit={handleSubmit} />
-                <FeedIndex posts={posts} />
+                <div>
+                    <h2>Create a Post</h2>
+                    <CreatePost/>
+                </div>
+                <div>
+                    <h2>Search by Hastag</h2>
+                    <SearchBar handleSubmit={handleSubmit} />
+                </div>
+                <div className="HomeFeed">
+                    <FeedIndex posts={posts} />
+                </div>
             </div>
         </div>
 

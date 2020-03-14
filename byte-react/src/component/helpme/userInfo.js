@@ -1,9 +1,9 @@
 import React,{useEffect, useState} from "react";
 import axios from 'axios'
 // import addPost from "../helpme/addPost"
-import CreatePost from "../createPost"
 
 const UserDisplay =({userInfo})=>{
+
 
      const [homeFeed, setHomeFeed] = useState([])
 
@@ -24,7 +24,6 @@ const UserDisplay =({userInfo})=>{
             <div className = "UserInfo" key = {userInfo.id}>
                 <h2>{userInfo.username}</h2>
                <img src = {userInfo.user_pic} className="userPic" alt=""></img>
-               <CreatePost updateFeed={updateFeed}/>
            </div>
 
         )
