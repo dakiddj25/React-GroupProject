@@ -2,22 +2,22 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { useInputs } from "../utility/InputHooks";
 
+
 const CreatePost = ({fetchUsersFeed}) => {
     const caption = useInputs("")
     const [picture, setPicture] = useState("")
     const [loading, setLoading] = useState(false)
+    const [arrCaption, setArrCaption] = useState([])
+    const [newHash, setNewHash] = useState("")
 
     const user_id= localStorage.getItem("currentUserID")
-
     const uploadPicture = async (e) => {
         const files = e.target.files;
-        const data = new FormData(); 
-        
+        const data = new FormData();
         data.append('file', files[0])
         data.append('upload_preset', 'BytesReact');
         data.append('cloud_name', 'dbhncpu02')
         setLoading(true)
-
         let res = await fetch("https://api.cloudinary.com/v1_1/dbhncpu02/image/upload", {
             method: 'Post',
             body: data
@@ -28,27 +28,10 @@ const CreatePost = ({fetchUsersFeed}) => {
         setLoading(false)
     }
 
-    
-    const getHashtag = async (arr, postID) => {
-        let newhash = ""
-        arr.forEach((word) =>{
-            if(word[0] === "#"){
-                console.log(word)
-                newhash = word
-         }
-       })
-       try{
-           let res2 = await axios.post(`http://localhost:3001/hashtag/`, { post_id:postID, hashtag:newhash });
-             fetchUsersFeed()
-     } catch (err){
-         debugger
-         console.log(err)
-     }
-     }
 
     const handlePostSubmit = async (e) => {
         e.preventDefault()
-        debugger 
+        debugger
         try {
         let res = await axios.post(`http://localhost:3001/posts/`, {
                 user_id: user_id,
@@ -56,15 +39,15 @@ const CreatePost = ({fetchUsersFeed}) => {
                 captions: caption.value
         })
         let postID = res.data.payload.id
-        // const arrOfCaption = caption.split(' ');
-        //must fix this says split is not a function, otherwise fetchusersfeed doesn't work
-        // getHashtag(arrOfCaption, postID)
+
+        setArrCaption(caption.split(' '));
+        getHashtag(arrCaption, postID)
+
          fetchUsersFeed();
+         debugger
         }catch(err){
             console.log(err)
         }
-    } 
-
 
     return (
             <form onSubmit ={handlePostSubmit} className="UserFeed">
@@ -74,8 +57,4 @@ const CreatePost = ({fetchUsersFeed}) => {
             </form>
     )
 }
-
-
-
-
 export default CreatePost;

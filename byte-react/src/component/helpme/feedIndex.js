@@ -13,7 +13,7 @@ const FeedIndex =({posts})=>{
                 </div>
 
                 <div className="usersPost">
-                    <img src= {post.pictures} alt=""></img>
+                    <img src= {post.pictures} className="postPic" alt=""></img>
                     <div className="caption">
                         <label>{post.captions}</label>
                     </div>

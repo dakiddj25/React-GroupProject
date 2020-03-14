@@ -2,6 +2,7 @@ import React from "react";
 import { useInputs } from "../utility/InputHooks";
 import image from './../css/Assets/bytesLogo.jpg';
 import image2 from '../css/Assets/group.jpg';
+import "../css/LogIn.css"
 import axios from "axios";
 
 const LogIn = () => {
@@ -36,9 +37,9 @@ const handleSubmit = async (e) =>{
              <div className="login">
              <form className="logInPage" onSubmit = {handleSubmit}>
                 <img src={image} alt="" className="logo"/> 
-                <h1> Log In To Byte Into Your Friend's Culinary Arts. </h1>
+                <h2> Log In To Byte Into Your Friend's Culinary Arts. </h2>
                 <input type="text" placeholder="User Name" required {...userName}/>
-                <input type="text" placeholder="Password" type="password" required {...password}/>
+                <input type="password" placeholder="Password" required {...password}/>
                 <input type="submit" className="submit"/> 
             </form>
 
