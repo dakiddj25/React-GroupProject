@@ -8,6 +8,8 @@ const EditProfile = ({fetchUserInfo}) => {
     const [userPic, setUserPic] = useState("")
     const [loading, setLoading] = useState(false)
 
+    const user_id= localStorage.getItem("currentUserID")
+
     const uploadPicture = async (e) => {
         const files = e.target.files;
         const data = new FormData(); 
@@ -29,10 +31,9 @@ const EditProfile = ({fetchUserInfo}) => {
 
 
     const updateProfile = async (e) => {
-        debugger
         e.preventDefault();
         try {
-            let res = await axios.patch(`http://localhost:3001/users/1`, {userName:username.value, userPic:userPic})
+            let res = await axios.patch(`http://localhost:3001/users/${user_id}`, {userName:username.value, user_pic:userPic})
             debugger
             fetchUserInfo()
         } catch(err){

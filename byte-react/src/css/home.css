@@ -7,75 +7,65 @@
 .profilePic{
 display: flex;
 flex-direction: column;
-
 width: 20%;
-
 }
-
-
 .FeedPage{
     display: flex;
     flex-direction: column;
     align-items: center;
 } 
-
  img{
     height: 100px;
     width: 100px;
     left: 0;
   } 
-
 .post{
     width: 600px;
     height: 230px;
     /* margin: .5%; */
-	background: #FFF;
-	border-radius: 6px;
-	/* position: absolute; */
-	/* top: 50%;
-	left: 50%; */
-	/* transform: translate(-50%,-50%); */
-	box-shadow: 0px .5px 5px 1px #000;
-	overflow: hidden;
-	display: inline-block;
+    background: #FFF;
+    border-radius: 6px;
+    /* position: absolute; */
+    /* top: 50%;
+    left: 50%; */
+    /* transform: translate(-50%,-50%); */
+    box-shadow: 0px .5px 5px 1px #000;
+    overflow: hidden;
+    display: inline-block;
 }
 .usersPorfilePic{
     background: white;
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	padding: 5px;
-	transform: translate(100px,100px);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    padding: 5px;
+    transform: translate(100px,100px);
 }
 .usersPorfilePic img {
     width: 80px;
-	height: 80px;
-	border-radius: 50%;
+    height: 80px;
+    border-radius: 50%;
 }
-
 .usersPost{
     height: auto;
-	background: #FFF;
-	/* padding: 20px;
-	padding-top: 40px; */
-	text-align: center;
+    background: #FFF;
+    /* padding: 20px;
+    padding-top: 40px; */
+    text-align: center;
 }
 /* 
 .usersPost img {
     height: auto;
     width: auto;
 } */
-
 .usersPost .caption{
     padding: 12px 20px;
-	/* background:rgb(212, 44, 44); */
-	border: none;
-	color: black;
-	border-radius: 30px;
-	font-size: 12px;
-	text-decoration: none;
-	font-weight: bold;
-	transition: all .3s ease-in;
+    /* background:rgb(212, 44, 44); */
+    border: none;
+    color: black;
+    border-radius: 30px;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all .3s ease-in;
 }
-
-

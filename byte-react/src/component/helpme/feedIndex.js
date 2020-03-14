@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React from "react"
 
 const FeedIndex =({posts})=>{
   
@@ -7,13 +7,13 @@ const FeedIndex =({posts})=>{
 
             <div className="post" key={post.id}>
 
-                <div className="usersPorfilePic">
-                    <img src= {post.user_pic}></img>
+                <div className="usersProfilePic">
+                    <img src= {post.user_pic} alt=""></img>
                     <h2>{post.username}</h2>
                 </div>
 
                 <div className="usersPost">
-                    <img src= {post.pictures}></img>
+                    <img src= {post.pictures} alt=""></img>
                     <div className="caption">
                         <label>{post.captions}</label>
                     </div>
