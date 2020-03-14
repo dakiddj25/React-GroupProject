@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useInputs } from "../utility/InputHooks";
+
+
 const CreatePost = ({fetchUsersFeed}) => {
     const caption = useInputs("")
     const [picture, setPicture] = useState("")
     const [loading, setLoading] = useState(false)
+    const [arrCaption, setArrCaption] = useState([])
+    const [newHash, setNewHash] = useState("")
+
     const user_id= localStorage.getItem("currentUserID")
     const uploadPicture = async (e) => {
         const files = e.target.files;
@@ -32,24 +37,26 @@ const CreatePost = ({fetchUsersFeed}) => {
                 captions: caption.value
         })
         let postID = res.data.payload.id
-        const arrOfCaption = caption.split(' ');
-        getHashtag(arrOfCaption, postID)
+        setArrCaption(caption.split(' '));
+        getHashtag(arrCaption, postID)
          fetchUsersFeed();
+         debugger
         }catch(err){
             console.log(err)
         }
     }
     const getHashtag = async (arr, postID) => {
-        let newhash = ""
         arr.forEach((word) =>{
             if(word[0] === "#"){
                 console.log(word)
-                newhash = word
+                setNewHash(word)
+                debugger
          }
        })
        try{
-           let res2 = await axios.post(`http://localhost:3001/hashtag/`, { post_id:postID, hashtag:newhash });
-             fetchUsersFeed()
+           let res2 = await axios.post(`http://localhost:3001/hashtag/`, { post_id:postID, hashtag:newHash });
+           debugger
+            fetchUsersFeed()
      } catch (err){
          debugger
          console.log(err)

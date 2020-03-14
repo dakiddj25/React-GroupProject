@@ -36,7 +36,7 @@ const handleSubmit = async (e) =>{
                 <img src={image} alt="" className="logo"/> 
                 <h1> Log In To Byte Into Your Friend's Culinary Arts. </h1>
                 <input type="text" placeholder="User Name" required {...userName}/>
-                <input type="text" placeholder="Password" type="password" required {...password}/>
+                <input type="password" placeholder="Password" required {...password}/>
                 <input type="submit" className="submit"/> 
             </form>
 

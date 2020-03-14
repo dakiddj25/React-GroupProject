@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios"
-// import { useInputs } from "../utility/InputHooks";
+// import { useInputs, fetchData } from "../utility/InputHooks";
 import SearchBar from "./helpme/hashtagSearch"
 import FeedIndex from "./helpme/feedIndex"
 import UserDisplay from "./helpme/userInfo"
@@ -55,7 +55,7 @@ const Home = () => {
     return(
         <div className="profile-container">
          <div className="Logo">
-                <img src={image} alt="" className="picture"/>
+                <img src={image} className="logo" alt="" />
             </div>
             <div className="Banner"></div>
                 <UserDisplay userInfo = {userInfo} />

@@ -51,7 +51,7 @@ const SignUp = () => {
                 <input type="text" placeholder="First Name" required {...firstName}/>
                 <input type="text" placeholder="Last Name" required {...lastName}/>
                 <input type="text" placeholder="User Name" required {...userName}/>
-                <input type="text" placeholder="Password" type="password" required {...password}/>
+                <input type="password" placeholder="Password" required {...password}/>
                 <input type="text" placeholder="Email" required {...email}/>
                 <h5>Upload Profile Picture</h5>
                 <input type="file" accept ="image/*" {...userPic} />
