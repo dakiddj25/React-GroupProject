@@ -14,7 +14,7 @@
 
 .Banner { 
   grid-area: 1 / 3 / 2 / 5; 
-  background-color: rgb(212, 44, 44)
+  background-color: rgb(212, 44, 44);
   }
 
 .UserInfo { 
@@ -34,16 +34,11 @@
     background-color: white;
     flex-direction: column;
     overflow: scroll;
-    height: 63vh;
+    height: 73vh;
     width: 60vw;
   }
-  /* .Empty { 
-    grid-area: 3 / 3 / 7 / 4;
-    width: 20vw;
-    } */
-
   .picture {
-      height: 120px;
+      height: 135px;
       width: auto;
   }
   .postPicture {
@@ -57,7 +52,7 @@
   }
 
   input {
-    width: 70%;
+    width: 20%;
     border-radius: 25px;
   }
 

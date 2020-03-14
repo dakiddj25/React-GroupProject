@@ -53,21 +53,22 @@ const Home = () => {
 
     return(
         <div className="home-container">
-         <div className="Logo">
+            <div className="Logo">
                 <img src={image} className="picture" alt="" />
             </div>
-            <div className="Banner"></div>
+            <div className="Banner">
+                <div className="Search">
+                    <h2>Search by Hastag</h2>
+                    <SearchBar handleSubmit={handleSubmit} />
+                </div>
+            </div>
             <div className="UserInfo">
                 <UserDisplay userInfo = {userInfo} />
             </div>
             <div className="UserFeed">
-                <div>
+                <div className="UserInputs">
                     <h2>Create a Post</h2>
                     <CreatePost getPosts = {getPosts}/>
-                </div>
-                <div>
-                    <h2>Search by Hastag</h2>
-                    <SearchBar handleSubmit={handleSubmit} />
                 </div>
                 <div className="HomeFeed">
                     <FeedIndex posts={posts} />
