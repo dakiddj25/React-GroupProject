@@ -11,11 +11,11 @@ const Profile = () => {
     const [info, setInfo] = useState({})
     const [feed, setFeed] = useState([])
 
+    const user_id= localStorage.getItem("currentUserID");
 
     const fetchUserInfo = async () => {
-        // let user = localStorage.getItem("currentUser")
         try {
-            let res = await axios.get(`http://localhost:3001/users/1`)
+            let res = await axios.get(`http://localhost:3001/users/${user_id}`)
             setInfo(res.data.payload)
         } catch(err){
             console.log(err)
@@ -29,8 +29,7 @@ const Profile = () => {
 
     const fetchUsersFeed = async () => {
         try {
-            let res = await axios.get("http://localhost:3001/posts/1") 
-            debugger
+            let res = await axios.get(`http://localhost:3001/posts/${user_id}`);
             setFeed(res.data.payload)
         }catch(err){
             console.log(err)
@@ -49,7 +48,7 @@ const Profile = () => {
             <div>
                 <h2>{obj.username}</h2>
                 <img src={obj.user_pic} alt="" />
-                <h3>{obj.firstname}{obj.lastname}</h3>
+                <h3>{obj.firstname} {obj.lastname}</h3>
                 <p>{obj.email}</p>
             </div>
         )
@@ -70,7 +69,7 @@ const Profile = () => {
                 <EditProfile fetchUserInfo= {fetchUserInfo}/>
             </div>
             <div className="UserFeed">
-                <CreatePost />
+                <CreatePost fetchUsersFeed={fetchUsersFeed}/>
                 <div className="Feed">
                     {showFeed}
                 </div>
