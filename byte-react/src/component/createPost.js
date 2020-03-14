@@ -3,14 +3,15 @@ import axios from 'axios';
 import { useInputs } from "../utility/InputHooks";
 
 
-const CreatePost = ({fetchUsersFeed}) => {
+const CreatePost = ({fetchUsersFeed, updateFeed}) => {
     const caption = useInputs("")
     const [picture, setPicture] = useState("")
     const [loading, setLoading] = useState(false)
     const [arrCaption, setArrCaption] = useState([])
     const [newHash, setNewHash] = useState("")
-
     const user_id= localStorage.getItem("currentUserID")
+
+    
     const uploadPicture = async (e) => {
         const files = e.target.files;
         const data = new FormData();
@@ -37,7 +38,7 @@ const CreatePost = ({fetchUsersFeed}) => {
                 captions: caption.value
         })
         let postID = res.data.payload.id
-        setArrCaption(caption.split(' '));
+        setArrCaption(caption.value.split(' '));
         getHashtag(arrCaption, postID)
          fetchUsersFeed();
          debugger
@@ -60,8 +61,8 @@ const CreatePost = ({fetchUsersFeed}) => {
      } catch (err){
          debugger
          console.log(err)
-     }
-     }
+    }
+}
     return (
             <form onSubmit ={handlePostSubmit} className="UserFeed">
                 <input type="text" placeholder="Enter A Caption!" {...caption}/>
