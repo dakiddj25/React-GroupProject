@@ -1,11 +1,7 @@
-import React,{ useState } from "react"
-import axios from "axios"
-import { useInputs, fetchData } from "../../utility/customHooks";
-import FindHashTag from "./feedIndex"
+import React from "react"
+import { useInputs } from "../../utility/InputHooks";
 
-// SELECT * FROM hashtags WHERE hashtag LIKE '%cor%'
-
-const SearchBar=({handleSubmit})=>{   
+const SearchBar=({handleSubmit})=>{
     const hashtag = useInputs("")
     const handleFormSubmit = (e) =>{
         e.preventDefault()

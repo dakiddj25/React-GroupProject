@@ -1,38 +1,70 @@
-.homepage{
+.home-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* height: 80vh; */
+    /* grid-template-rows: 1fr 1fr 1fr; */
+  }
+  
+  /* .Logo { 
+    grid-area: 1 / 1 / 2 / 3; 
     display: flex;
-    padding: 15px;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-.profilePic{
-display: flex;
-flex-direction: column;
+    background-color: rgb(212, 44, 44);
+  } */
 
-width: 20%;
-
-}
-
-
-.FeedPage{
+  /* .Banner { 
+    grid-area: 1 / 3 / 2 / 5; 
+    background-color: rgb(212, 44, 44)
+    } */
+  
+  /* .UserInfo { 
+    grid-area: 2 / 1 / 4 / 2; 
     display: flex;
     flex-direction: column;
     align-items: center;
+    } */
+  
+    /* .UserFeed { 
+      grid-area: 2 / 2 / 4 / 5; 
+      background-color: white;
+    } */
     
+    .HomeFeed{
+      display: flex;
+      background-color: white;
+      flex-direction: column;
+      overflow: scroll;
+      height: 36vh;
+      width: 70vw;
+    }
+  
+    .picture {
+        height: 120px;
+        width: auto;
+    }
+
+    .userPic{
+        height: auto;
+        width: 60%;
+      }
+  
+    input {
+      width: 70%;
+      border-radius: 25px;
+    }
+
+    img{
+        height: auto;
+        width: 5%;
+    }
+
+    .postPic {
+        height:auto;
+        width:600px;
+    }
     
-} 
-
- img{
-    height: 100px;
-    width: 100px;
-    left: 0;
-  } 
-
-.post{
-    margin-left: 40%;
-    border: 1px solid #ccc;
+    .usersProfilePic{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
     
-    width: 300px;
-
-}
-
-

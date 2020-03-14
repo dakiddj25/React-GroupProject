@@ -1,14 +1,20 @@
-import React, {useEffect, useState} from "react"
+import React from "react"
 
 const FeedIndex =({posts})=>{
   
     const displayResults = posts.map(post=>{
         return(
-
             <div className="post" key={post.id}>
-                <img src= {post.pictures}></img>
-                <br/>
-                <label>{post.captions}</label>
+                <div className="usersProfilePic">
+                    <img src= {post.user_pic} alt=""></img>
+                    <h5>{post.username}</h5>
+                </div>
+                <div className="usersPost">
+                    <img src= {post.pictures} className="postPic" alt=""></img>
+                    <div className="caption">
+                        <label>{post.captions}</label>
+                    </div>
+                </div>
             </div>
         )
     })

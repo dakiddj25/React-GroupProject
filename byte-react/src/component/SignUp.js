@@ -1,12 +1,11 @@
 import React from "react";
 import { useInputs } from "../utility/InputHooks";
-
 import image from './../css/Assets/bytesLogo.jpg'
 import image2 from '../css/Assets/group.jpg'
-  import {Link} from "react-router-dom"
+import {Link} from "react-router-dom"
 import "../css/SignUp.css"
 import axios from "axios";
-// import LogIn from "./LogIn";
+
 
 const SignUp = () => {
     localStorage.clear();
@@ -29,7 +28,7 @@ const SignUp = () => {
               email: email.value,
               user_pic: userPic.value
           })
-          localStorage.setItem("currentUserID", res.data.user.id)
+            localStorage.setItem("currentUserID", res.data.user.id)
             window.location.href = "./"
         }catch(err){
             console.log(err)
@@ -51,7 +50,7 @@ const SignUp = () => {
                 <input type="text" placeholder="First Name" required {...firstName}/>
                 <input type="text" placeholder="Last Name" required {...lastName}/>
                 <input type="text" placeholder="User Name" required {...userName}/>
-                <input type="text" placeholder="Password" type="password" required {...password}/>
+                <input type="password" placeholder="Password" required {...password}/>
                 <input type="text" placeholder="Email" required {...email}/>
                 <h5>Upload Profile Picture</h5>
                 <input type="file" accept ="image/*" {...userPic} />
