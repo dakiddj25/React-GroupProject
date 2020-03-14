@@ -3,7 +3,6 @@ import React from "react"
 const FeedIndex =({posts})=>{
   
     const displayResults = posts.map(post=>{
-        debugger
         return(
             <div className="post" key={post.id}>
                 <div className="usersProfilePic">

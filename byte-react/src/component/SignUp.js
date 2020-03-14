@@ -28,7 +28,7 @@ const SignUp = () => {
               email: email.value,
               user_pic: userPic.value
           })
-          localStorage.setItem("currentUserID", res.data.user.id)
+            localStorage.setItem("currentUserID", res.data.user.id)
             window.location.href = "./"
         }catch(err){
             console.log(err)
