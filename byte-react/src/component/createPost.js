@@ -38,11 +38,31 @@ const CreatePost = ({fetchUsersFeed}) => {
                 pictures: picture,
                 captions: caption.value
         })
+        let postID = res.data.payload.id
+        const arrOfCaption = caption.split(' ');
+        getHashtag(arrOfCaption, postID)
          fetchUsersFeed();
         }catch(err){
             console.log(err)
         }
     } 
+
+    const getHashtag = async (arr, postID) => {
+        let newhash = ""
+        arr.forEach((word) =>{
+            if(word[0] === "#"){
+                console.log(word)
+                newhash = word
+         }
+       })
+       try{
+           let res2 = await axios.post(`http://localhost:3001/hashtag/`, { post_id:postID, hashtag:newhash });
+             fetchUsersFeed()
+     } catch (err){
+         debugger
+         console.log(err)
+     }
+     }
 
     return (
             <form onSubmit ={handlePostSubmit} className="UserFeed">

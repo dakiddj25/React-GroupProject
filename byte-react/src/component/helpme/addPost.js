@@ -30,19 +30,13 @@ const postPicture = async(e)=> {
     let pictures = e.target.image.value
     let caption =  e.target.caption.value
    
-    debugger
     try{
         let res = await axios.post(`http://localhost:3001/posts/`,{ user_id:user, pictures:pictures , captions:caption});
             debugger
             let postID = res.data.payload.id
-
             const arrOfCaption = caption.split(' ');
-
-            
-
-getHashtag(arrOfCaption,postID)
-//returns hastag word that can be pushed into a axios post
-  
+            getHashtag(arrOfCaption, postID)
+            //returns hastag word that can be pushed into a axios post
     } catch (err){
         debugger
         console.log(err)
