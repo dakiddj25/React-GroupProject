@@ -28,7 +28,7 @@ const Home = () => {
         getPosts()
     },[])
 
-    const handleSubmit = (str) => {getPosts(str)}
+    const handleSubmit = (str) =>  {getPosts(str)}
 
     const getUserProfile = async () =>{
         try{
@@ -70,7 +70,7 @@ const Home = () => {
                     <SearchBar handleSubmit={handleSubmit} />
                 </div>
                 <div className="HomeFeed">
-                <FeedIndex posts={posts} />
+                    <FeedIndex posts={posts} />
                 </div>
             </div>
         </div>

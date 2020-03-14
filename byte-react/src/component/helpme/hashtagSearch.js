@@ -1,8 +1,5 @@
 import React from "react"
-import { useInputs,  } from "../../utility/InputHooks";
-// import FindHashTag from "./feedIndex"
-
-// SELECT * FROM hashtags WHERE hashtag LIKE '%cor%'
+import { useInputs } from "../../utility/InputHooks";
 
 const SearchBar=({handleSubmit})=>{
     const hashtag = useInputs("")
