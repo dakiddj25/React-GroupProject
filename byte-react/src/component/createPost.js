@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useInputs } from "../utility/InputHooks";
-
-
-const CreatePost = ({fetchUsersFeed}) => {
+const CreatePost = ({fetchUsersFeed, updateFeed}) => {
     const caption = useInputs("")
     const [picture, setPicture] = useState("")
     const [loading, setLoading] = useState(false)
     const [arrCaption, setArrCaption] = useState([])
     const [newHash, setNewHash] = useState("")
-
     const user_id= localStorage.getItem("currentUserID")
+
+    
     const uploadPicture = async (e) => {
         const files = e.target.files;
         const data = new FormData();
@@ -28,7 +27,6 @@ const CreatePost = ({fetchUsersFeed}) => {
         setLoading(false)
     }
 
-
     const handlePostSubmit = async (e) => {
         e.preventDefault()
         debugger
@@ -39,15 +37,32 @@ const CreatePost = ({fetchUsersFeed}) => {
                 captions: caption.value
         })
         let postID = res.data.payload.id
-
-        setArrCaption(caption.split(' '));
+        setArrCaption(caption.value.split(' '));
         getHashtag(arrCaption, postID)
-
          fetchUsersFeed();
          debugger
         }catch(err){
             console.log(err)
         }
+    }
+
+    const getHashtag = async (arr, postID) => {
+        arr.forEach((word) =>{
+            if(word[0] === "#"){
+                console.log(word)
+                setNewHash(word)
+                debugger
+         }
+       })
+       try{
+           let res2 = await axios.post(`http://localhost:3001/hashtag/`, { post_id:postID, hashtag:newHash });
+           debugger
+            fetchUsersFeed()
+     } catch (err){
+         debugger
+         console.log(err)
+    }
+}
 
     return (
             <form onSubmit ={handlePostSubmit} className="UserFeed">

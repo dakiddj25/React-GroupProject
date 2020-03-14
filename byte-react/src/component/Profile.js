@@ -8,7 +8,6 @@ const Profile = () => {
     const [info, setInfo] = useState({})
     const [feed, setFeed] = useState([])
     const user_id= localStorage.getItem("currentUserID");
-
     const fetchUserInfo = async () => {
         try {
             let res = await axios.get(`http://localhost:3001/users/${user_id}`)
@@ -21,6 +20,7 @@ const Profile = () => {
         useEffect(() => {
             fetchUserInfo()
         }, [])
+
     const fetchUsersFeed = async () => {
         debugger
         try {
@@ -38,7 +38,7 @@ const Profile = () => {
         return (
             <div>
                 <h2>{obj.username}</h2>
-                <img src={obj.user_pic} alt="" />
+                <img src={obj.user_pic} alt="" className="profileImg" />
                 <h3>{obj.firstname} {obj.lastname}</h3>
                 <p>{obj.email}</p>
             </div>

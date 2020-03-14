@@ -9,7 +9,7 @@
   grid-area: 1 / 1 / 2 / 3; 
   display: flex;
   background-color: rgb(212, 44, 44);
-}q
+}
 
 
 .Banner { 
@@ -22,14 +22,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width:20vw; */
-   /* height: 85vh; */
   }
 
   .UserFeed { 
     grid-area: 2 / 2 / 4 / 5; 
     background-color: white;
-      /* width: 80vw; */
   }
   
   .Feed{
@@ -37,7 +34,7 @@
     background-color: white;
     flex-direction: column;
     overflow: scroll;
-    height: 58vh;
+    height: 63vh;
     width: 60vw;
   }
   /* .Empty { 
@@ -52,6 +49,11 @@
   .postPicture {
     height:auto;
     width:600px;
+  }
+
+  .profileImg{
+    height: auto;
+    width: 60%;
   }
 
   input {
