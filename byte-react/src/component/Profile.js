@@ -2,7 +2,6 @@ import React,{useEffect, useState} from "react";
 import axios from 'axios';
 import "../css/Profile.css";
 import image from './../css/Assets/bytesLogo.jpg';
-import { useInputs } from "../utility/InputHooks";
 import CreatePost from "./createPost"
 import EditProfile from "./editProfile"
 

@@ -32,7 +32,7 @@ const EditProfile = ({fetchUserInfo}) => {
         debugger
         e.preventDefault();
         try {
-            let res = await axios.patch(`http://localhost:3001/users/1`, {userName:username.value, userPic:userPic})
+            let res = await axios.patch(`http://localhost:3001/users/1`, {userName:username.value, user_pic:userPic})
             debugger
             fetchUserInfo()
         } catch(err){

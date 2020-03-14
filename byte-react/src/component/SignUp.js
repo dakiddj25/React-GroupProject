@@ -1,5 +1,5 @@
 import React from "react";
-import { useInputs, fetchData } from "../utility/InputHooks";
+import { useInputs } from "../utility/InputHooks";
 
 import image from './../css/Assets/bytesLogo.jpg'
 import image2 from '../css/Assets/group.jpg'
