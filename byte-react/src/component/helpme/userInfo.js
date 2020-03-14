@@ -1,5 +1,6 @@
 import React from "react"
 import addPost from "../helpme/addPost"
+import CreatePost from "../createPost"
 
 const UserDisplay =({userInfo})=>{
   debugger
@@ -8,12 +9,7 @@ const UserDisplay =({userInfo})=>{
             <div className = "UserInfo" key = {userInfo.id}>
                 <h2>{userInfo.username}</h2>
                <img src = {userInfo.user_pic} alt=""></img>
-              
-               <form onSubmit = {addPost}>
-                   <input name= "caption" type = "text" placeholder = "caption"/>
-                   <input name = "image" type= "file" accept = "image/*"/>
-                   <button>submit</button>
-               </form>
+               <CreatePost/>
            </div>
 
         )
