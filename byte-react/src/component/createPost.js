@@ -28,25 +28,7 @@ const CreatePost = ({fetchUsersFeed}) => {
         setLoading(false)
     }
 
-
-    const handlePostSubmit = async (e) => {
-        e.preventDefault()
-        debugger 
-        try {
-        let res = await axios.post(`http://localhost:3001/posts/`, {
-                user_id: user_id,
-                pictures: picture,
-                captions: caption.value
-        })
-        let postID = res.data.payload.id
-        const arrOfCaption = caption.split(' ');
-        getHashtag(arrOfCaption, postID)
-         fetchUsersFeed();
-        }catch(err){
-            console.log(err)
-        }
-    } 
-
+    
     const getHashtag = async (arr, postID) => {
         let newhash = ""
         arr.forEach((word) =>{
@@ -63,6 +45,26 @@ const CreatePost = ({fetchUsersFeed}) => {
          console.log(err)
      }
      }
+
+    const handlePostSubmit = async (e) => {
+        e.preventDefault()
+        debugger 
+        try {
+        let res = await axios.post(`http://localhost:3001/posts/`, {
+                user_id: user_id,
+                pictures: picture,
+                captions: caption.value
+        })
+        let postID = res.data.payload.id
+        // const arrOfCaption = caption.split(' ');
+        //must fix this says split is not a function, otherwise fetchusersfeed doesn't work
+        // getHashtag(arrOfCaption, postID)
+         fetchUsersFeed();
+        }catch(err){
+            console.log(err)
+        }
+    } 
+
 
     return (
             <form onSubmit ={handlePostSubmit} className="UserFeed">

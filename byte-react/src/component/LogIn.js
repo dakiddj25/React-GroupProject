@@ -12,10 +12,12 @@ const LogIn = () => {
 const handleSubmit = async (e) =>{
     e.preventDefault();
     try{
+        debugger
         let res = await axios.post("http://localhost:3001/users/login",{
                 userName: userName.value,
                 password: password.value
             })
+            console.log(res)
             localStorage.setItem("currentUserID", res.data.user.id)
             window.location.href = "./"
         }catch(err){
