@@ -1,12 +1,11 @@
 import React from "react";
 import { useInputs } from "../utility/InputHooks";
-
 import image from './../css/Assets/bytesLogo.jpg'
 import image2 from '../css/Assets/group.jpg'
-  import {Link} from "react-router-dom"
+import {Link} from "react-router-dom"
 import "../css/SignUp.css"
 import axios from "axios";
-// import LogIn from "./LogIn";
+
 
 const SignUp = () => {
     localStorage.clear();

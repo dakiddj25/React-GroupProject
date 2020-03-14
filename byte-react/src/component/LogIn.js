@@ -2,7 +2,8 @@ import React from "react";
 import { useInputs } from "../utility/InputHooks";
 import image from './../css/Assets/bytesLogo.jpg';
 import image2 from '../css/Assets/group.jpg';
-import "../css/LogIn.css"
+import {Link} from "react-router-dom";
+import "../css/LogIn.css";
 import axios from "axios";
 
 const LogIn = () => {
@@ -41,6 +42,9 @@ const handleSubmit = async (e) =>{
                 <input type="text" placeholder="User Name" required {...userName}/>
                 <input type="password" placeholder="Password" required {...password}/>
                 <input type="submit" className="submit"/> 
+            </form>
+            <form className="user">
+                <Link to="/SignUp" className="button">Don't Have An Account? Click Here</Link>
             </form>
 
              </div>
