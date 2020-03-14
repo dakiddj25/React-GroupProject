@@ -9,7 +9,7 @@
   grid-area: 1 / 1 / 2 / 3; 
   display: flex;
   background-color: rgb(212, 44, 44);
-}
+}q
 
 
 .Banner { 
@@ -38,7 +38,7 @@
     flex-direction: column;
     overflow: scroll;
     height: 58vh;
-    width: 80vw;
+    width: 60vw;
   }
   /* .Empty { 
     grid-area: 3 / 3 / 7 / 4;

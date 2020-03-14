@@ -33,7 +33,7 @@ const EditProfile = ({fetchUserInfo}) => {
     const updateProfile = async (e) => {
         e.preventDefault();
         try {
-            let res = await axios.patch(`http://localhost:3001/users/${user_id}`, {userName:username.value, user_pic:userPic})
+            await axios.patch(`http://localhost:3001/users/${user_id}`, {userName:username.value, user_pic:userPic})
             debugger
             fetchUserInfo()
         } catch(err){
