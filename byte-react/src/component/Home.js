@@ -13,6 +13,7 @@ const Home = () => {
 
     const [posts, setPosts ] = useState([])
     const [userInfo, setUserInfo ] = useState([])
+
     
     const getPosts = async (str="") =>{
         try{
