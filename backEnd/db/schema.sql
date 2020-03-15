@@ -35,10 +35,11 @@ hashtag VARCHAR
 
 INSERT INTO users( firstName, lastName, userName, password,  email, user_pic)
 VALUES( 'Rafid', 'Hossain', 'rafidhos', 'pursuit','rafidhos9@pursuit.org', 'https://pbs.twimg.com/profile_images/841015882797199361/Wigbpdj4_400x400.jpg'),
-( 'Jay', 'Hossain', 'jones123', '1234','jones12@pursuit.org', 'https://cdn.newsapi.com.au/image/v1/8a4d4a44df4a7069781a6583461bcb1d'),
-( 'Crystal', 'Hossain', 'Cry123', '1234','cry12@pursuit.org', 'https://pbs.twimg.com/profile_images/518458002341625856/Huesj-5A.jpeg'),
-( 'Jovanni', 'Hossain', 'Jojo', '1234','jo12@pursuit.org', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSJHfTMQ5TLY4Tv6lzArjZWZBJxrfZmfxNieXlORNb6oetSzo_X'),
-( 'Ben', 'Hossain', 'benji', '1234','benny@pursuit.org', 'https://steamuserimages-a.akamaihd.net/ugc/494654052800262970/8F0E2FA5EB82B5D30E1C568B7524A9FECAC020A6/');
+( 'Jay', 'Jones', 'jones123', '1234','jones12@pursuit.org', 'https://cdn.newsapi.com.au/image/v1/8a4d4a44df4a7069781a6583461bcb1d'),
+( 'Crystal', 'Cadona', 'Cry123', '1234','cry12@pursuit.org', 'https://pbs.twimg.com/profile_images/518458002341625856/Huesj-5A.jpeg'),
+( 'Jovanni', 'Luna', 'Jojo', '1234','jo12@pursuit.org', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSJHfTMQ5TLY4Tv6lzArjZWZBJxrfZmfxNieXlORNb6oetSzo_X'),
+( 'Jeremy', 'Bond', 'Jayjay', '1234','jdasasd12@pursuit.org', 'https://files.slack.com/files-pri/TCVA3PF24-F010341R4A3/20190204_195323.jpg'),
+( 'Ben', 'Carson', 'benji', '1234','benny@pursuit.org', 'https://steamuserimages-a.akamaihd.net/ugc/494654052800262970/8F0E2FA5EB82B5D30E1C568B7524A9FECAC020A6/');
 
 
 INSERT INTO posts(user_id, pictures, captions)
