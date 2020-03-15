@@ -1,5 +1,4 @@
 const db = require('./../db')
-
 const getPosts = async (req, res, next) => {
     try {
         let posts = await db.any("SELECT * FROM posts");
@@ -17,10 +16,9 @@ const getPosts = async (req, res, next) => {
         next()
     }
 }
-
-const getAllUsersPosts = async (req, res, next) => {
+const getUsersPosts = async (req, res, next) => {
     try{
-        let posts = await db.any("SELECT * FROM posts INNERJOIN users ON posts.poster_id=users.id");
+        let posts = await db.any("SELECT * FROM posts WHERE user_id=$1 ORDER BY id DESC", req.params.id);
         res.status(200).json({
             status: "success",
             message: "all users posts",
@@ -35,29 +33,9 @@ const getAllUsersPosts = async (req, res, next) => {
         next()
     }
 }
-
-const getPostByID = async (req, res, next) => {
-    try {
-        let {postId} = req. params.id;
-        let post = await db.one("SELECT * FROM posts WHERE id=$1", postId);
-        res.status(200).json({
-            status: "success",
-            message: "all users posts",
-            payload: post
-        })
-    } catch (err){
-        res.status(400).json({
-            status: "Error",
-            message: "Error",
-            payload: err
-        })
-        next()
-    }
-}
-
 const deletePost = async (req, res, next) => {
     try {
-        let {tId} = req.params.id;
+        let {postId} = req.params.id;
         let post = ("DELETE FROM posts WHERE id=$1 RETURNING *", postId)
         res.status(200).json({
             status: "success",
@@ -73,7 +51,6 @@ const deletePost = async (req, res, next) => {
         next()
     }
 }
-
 const editPost = async (req, res, next) => {
     try {
         let {pictures, caption} = req.body;
@@ -93,12 +70,22 @@ const editPost = async (req, res, next) => {
         next()
     }
 }
-
-// const createPost = async (req, res, next) => {
-//     try {
-//         let {users_id, pictures, caption} = req.body;
-//         let post = awat db.one("INSERT INTO posts ()")
-//     }
-// }
-
-module.exports = {getPosts, getPostByID, deletePost, editPost}
+const createPost = async (req, res, next) => {
+    try {
+        let post = await db.one(`
+            INSERT INTO posts (user_id, pictures, captions) VALUES('${req.body.user_id}', '${req.body.pictures}', '${req.body.captions}') RETURNING *`);
+        res.status(200).json({
+            status: "success",
+            message: "created a new post",
+            payload: post
+        })
+    } catch (err){
+        res.status(400).json({
+            status: "Error",
+            message: "Error",
+            payload: err
+        })
+        next()  
+    }
+}
+module.exports = {getPosts, getUsersPosts, deletePost, editPost, createPost}
