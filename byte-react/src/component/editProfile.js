@@ -35,7 +35,6 @@ const EditProfile = ({fetchUserInfo}) => {
         debugger
         try {
             await axios.patch(`http://localhost:3001/users/${user_id}`, {userName:username.value, user_pic:userPic})
-            debugger
             fetchUserInfo()
         } catch(err){
             console.log(err)
