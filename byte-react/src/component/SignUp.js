@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import { useInputs } from "../utility/InputHooks";
 import image from './../css/Assets/bytesLogo.jpg'
 import image2 from '../css/Assets/group.jpg'
@@ -14,7 +14,8 @@ const SignUp = () => {
     const userName = useInputs("")
     const password = useInputs("")
     const email = useInputs("")
-    const userPic = useInputs("")
+    const [userPic, setUserPic] = useState("")
+    const [loading, setLoading] = useState(false)
     
     const handleSubmit = async (e)=>{
         debugger
@@ -26,7 +27,7 @@ const SignUp = () => {
               userName: userName.value,
               password: password.value,
               email: email.value,
-              user_pic: userPic.value
+              user_pic: userPic
           })
             localStorage.setItem("currentUserID", res.data.user.id)
             window.location.href = "./"
@@ -35,6 +36,27 @@ const SignUp = () => {
         }
 
     }
+
+    const uploadPicture = async (e) => {
+        const files = e.target.files;
+        const data = new FormData();
+        data.append('file', files[0])
+        data.append('upload_preset', 'BytesReact');
+        data.append('cloud_name', 'dbhncpu02')
+        setLoading(true)
+        let res = await fetch("https://api.cloudinary.com/v1_1/dbhncpu02/image/upload", {
+            method: 'Post',
+            body: data
+            }
+        )
+        const file = await res.json()
+        setUserPic(file.secure_url)
+        setLoading(false)
+    }
+
+
+
+
   
     return (
         <div className="grid-container">
@@ -53,7 +75,7 @@ const SignUp = () => {
                 <input type="password" placeholder="Password" required {...password}/>
                 <input type="text" placeholder="Email" required {...email}/>
                 <h5>Upload Profile Picture</h5>
-                <input type="file" accept ="image/*" {...userPic} />
+                <input type="file" onChange={uploadPicture}/>
                 <input type="submit" className="submit"/>
             </form>
             <form className="user">

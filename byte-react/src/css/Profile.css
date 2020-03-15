@@ -1,8 +1,6 @@
 .profile-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  /* height: 80vh; */
-  /* grid-template-rows: 1fr 1fr 1fr; */
 }
 
 .Logo { 
@@ -27,6 +25,7 @@
   .UserFeed { 
     grid-area: 2 / 2 / 4 / 5; 
     background-color: white;
+    
   }
   
   .Feed{
@@ -38,7 +37,7 @@
     width: 60vw;
   }
   .picture {
-      height: 135px;
+      height: 140px;
       width: auto;
   }
   .postPicture {
@@ -49,6 +48,22 @@
   .profileImg{
     height: auto;
     width: 60%;
+    border-radius: 80%;
+    box-shadow: 1px 1px 10px 10px whitesmoke;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  .profileImg:hover{
+    border-radius: 20%;
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 
   input {

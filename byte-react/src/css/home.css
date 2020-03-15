@@ -1,8 +1,6 @@
 .home-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  /* height: 80vh; */
-  /* grid-template-rows: 1fr 1fr 1fr; */
 }
 @import url("https://fonts.googleapis.com/css?family=Quantico:700|Rajdhani:500&display=swap");
 body {
@@ -50,6 +48,7 @@ border-radius: 20%;
       margin-left: 50px;
       margin-top: 20px;
   }
+
 .post {
 -webkit-transition: all 1s ease;
    -moz-transition: all 1s ease;
