@@ -18,6 +18,7 @@ const FeedIndex =({posts})=>{
             </div>
         )
     })
+
     return(
         <>
         {displayResults}

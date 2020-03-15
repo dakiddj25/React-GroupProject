@@ -17,7 +17,17 @@ const Home = () => {
     const getPosts = async (str="") =>{
         try{
             let res = await axios.post("http://localhost:3001/hashtag/getHashtag", {hashtag: str})
-            setPosts(res.data.payload)
+            
+            let postArr = res.data.payload
+            if(postArr.length === 0 ){
+                setPosts([{
+                    pictures: "https://cdn.windowsreport.com/wp-content/uploads/2019/02/Ddkmd.sys-blue-screen-errors-in-Windows.jpg",
+                    captions:"No Results Found"}])
+            } else{
+
+                setPosts(res.data.payload)
+            }
+            
         }catch(err){
             console.log(err)
             setPosts([])
@@ -37,7 +47,6 @@ const Home = () => {
             let res = await axios.get(`http://localhost:3001/users/${user}`)
       
             setUserInfo(res.data.payload)
-           // set it in the state
          } catch (err){ 
             console.log(err)
             setUserInfo([])
@@ -48,8 +57,6 @@ const Home = () => {
      useEffect(()=>{
         getUserProfile()
     },[])
-     
-    
 
     return(
         <div className="home-container">
