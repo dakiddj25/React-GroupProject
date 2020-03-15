@@ -58,9 +58,9 @@ const deleteUser = async (req, res, next) => {
 
 const editUser = async (req, res, next) => {
     try {
-        let {firstName, lastName, userName, password, email, userPic} = req.body;
-        let {userId} = req. params.id;
-        let user = await db.one("UPDATE users SET firstName=$1, lastName=$2, userName=$3, email=$4, password=$5, userPic=$6 WHERE =$7 RETURNING *", [firstName, lastName, userName, email, password,user_pic, userId])
+        let {userName, user_pic} = req.body;
+        let userId = req.params.id;
+        let user = await db.one(`UPDATE users SET  userName='${userName}', user_pic='${user_pic}' WHERE id=${userId} RETURNING *`);
         res.status(200).json({
             status: "success",
             message: "all users posts",

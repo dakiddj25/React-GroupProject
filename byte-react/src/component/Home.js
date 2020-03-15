@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios"
-// import { useInputs, fetchData } from "../utility/InputHooks";
 import SearchBar from "./helpme/hashtagSearch"
 import FeedIndex from "./helpme/feedIndex"
 import UserDisplay from "./helpme/userInfo"

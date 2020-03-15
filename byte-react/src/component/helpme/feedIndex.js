@@ -6,7 +6,7 @@ const FeedIndex =({posts})=>{
         return(
             <div className="post" key={post.id}>
                 <div className="usersProfilePic">
-                    <img src= {post.user_pic} alt=""></img>
+                    <img src= {post.user_pic} alt="" className="posterPic"></img>
                     <h5>{post.username}</h5>
                 </div>
                 <div className="usersPost">
